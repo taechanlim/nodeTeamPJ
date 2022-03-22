@@ -1,0 +1,9 @@
+/* css stylesheet */
+
+h1 > a, h1 {
+    color: darkgoldenrod;
+}
+
+h2 > a, h2 {
+    color: yellowgreen;
+}
