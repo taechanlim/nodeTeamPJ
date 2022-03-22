@@ -1,0 +1,25 @@
+{
+  "name": "team5-front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chi091/Team5-FRONT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chi091/Team5-FRONT/issues"
+  },
+  "homepage": "https://github.com/chi091/Team5-FRONT#readme",
+  "dependencies": {
+    "chokidar": "^3.5.3",
+    "express": "^4.17.3",
+    "nunjucks": "^3.2.3"
+  }
+}
