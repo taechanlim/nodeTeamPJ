@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>팀5 Team5 팀 파이브</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/css/test.css">
+    <style>
+        @font-face {
+            font-family: '-KITA-Regular';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/-KITA-Regular.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Pretendard-Regular';
+            src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        * {
+            font-family: 'Pretendard-Regular';
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        {% include "./header.html" %}
+        <div id="main">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>

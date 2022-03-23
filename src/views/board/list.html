@@ -1,5 +1,15 @@
 {% extends "../publicTemplate/layout.html" %}
 {% block content %}
+<script type="text/javascript">
+  console.log('js 확인')
+  document.addEventListener('DOMContentLoaded', async ()=>{
+    // 요청에대한 코드를 작성해서 결과물을 받아와야합니다.
+    const response = await axios.post('http://localhost:4001/api/board/list',{
+      withCredentials:true,
+    })
+    console.log(response)
+  })
+</script>
 <h1>여긴 게시판 리스트야</h1>
 <h2><a href="/board/view">가상의 글이야</a></h2>
 <h2><a href="/board/view">가상의 글이야</a></h2>
