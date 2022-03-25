@@ -6,7 +6,6 @@ const router = require('./src/routes')
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(express.static('./src/public'))
-// app.use(express.static('public/j'))
 app.set('view engine', 'html')
 nunjucks.configure('./src/views',{
   express:app,
