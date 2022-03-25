@@ -1,23 +1,72 @@
 /* css stylesheet */
 
-/*@font-face {*/
-/*    font-family: '-KITA-Regular';*/
-/*    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/-KITA-Regular.woff') format('woff');*/
-/*    font-weight: normal;*/
-/*    font-style: normal;*/
-/*}*/
-
-/*@font-face {*/
-/*    font-family: 'Pretendard-Regular';*/
-/*    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');*/
-/*    font-weight: 400;*/
-/*    font-style: normal;*/
-/*}*/
-
 h1 > a, h1 {
     color: darkgoldenrod;
 }
 
 h2 > a, h2 {
     color: yellowgreen;
+}
+
+:root {
+    --main-toppadding: '';
+    --free-board-height: 200px;
+}
+/* public */
+*{margin: 0; padding: 0;}
+ul,li{list-style: none;}
+#content, #free_board_wrap {
+    transition: all ease 1s 0s;
+}
+
+#content {
+    padding-top: var(--main-toppadding);
+}
+
+/* header.html */
+#header_wrap {
+    position: fixed;
+    max-width: 1200px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    margin: 0 auto;
+    /* css flex */
+    display: flex;
+    justify-content: space-between;
+}
+
+#header_wrap > ul {
+    /* css flex */
+    display: flex;
+}
+
+#logo_home {
+    width: 50px;
+    height: 50px;
+}
+
+#tag_search {
+    /* css flex */
+    display: flex;
+    align-items: center;
+}
+
+#tag_search ~ input {
+    height: 50%;
+}
+
+/* board.html */
+#free_board_wrap {
+    background: blue;
+    height: var(--free-board-height);
+    width: 100%;
+    max-width: 1200px;
+    position: absolute;
+    z-index: 1;
+    /*top: 0;*/
+    transform: translateY( -200px );
+    opacity: 0;
+    visibility: visible;
 }

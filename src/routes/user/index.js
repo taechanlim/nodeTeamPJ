@@ -7,6 +7,12 @@ router.get('/join',(req,res)=>{
   res.render('./user/join')
 })
 
+// 로그인 (아이디 비밀번호 안맞았을 때, 인증토큰 없을 때)
+router.get('/login',(req,res)=>{
+  console.log('--------------------- 로그인 페이지 (로그인 실패함) ---------------------')
+  res.render('./user/login')
+})
+
 // 환영페이지
 router.get('/welcome',(req,res)=>{
   console.log('--------------------- 환영 페이지 ---------------------')
