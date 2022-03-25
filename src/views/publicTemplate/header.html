@@ -1,4 +1,35 @@
-<script type="text/javascript" src="/js/publicTemplate/header.js"></script>
 <header id="header_wrap">
-    <h1><a href="/">홈으로 가</a></h1>
+    <h1>
+        <a href="/">
+            <img id="logo_home" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Bit-logo.svg/1200px-Bit-logo.svg.png?20110109231006">
+        </a>
+    </h1>
+    <!-- 태그(#) 검색, 키브도 입력시 boardlist 밑으로 이동, input 비어있으면 boardlist 위로 숨김 -->
+    <form id="tag_search" method="post" >
+        <input id="input_tag_search" type="text" name="axiosTest" placeholder="# 포함 태그 검색">
+        <input type="submit" value="검색">
+    </form>
+    <ul>
+        <li>
+            <a href="/notice/list">고객지원</a>
+            <form id="login_Frm_main"method="post" action="http://localhost:4001/user/login">
+                <input id="login_userid" type="text" name="userid" placeholder="아이디">
+                <input id="login_userpw" type="password" name="userpw" placeholder="비밀번호">
+                <input type="submit" value="로그인">
+            </form>
+        </li>
+        <li style="">
+            <form method="post" action="/">
+                <input type="hidden" value="">
+                <input type="submit" value="로그아웃">
+            </form>
+        </li>
+        <li>
+            <a href="/auth/kakao">카카오 로그인</a>
+        </li>
+        <li>
+            <a href="/user/join">회원가입</a>
+        </li>
+    </ul>
+    {% include "./board.html" %}
 </header>
