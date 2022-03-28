@@ -10,7 +10,7 @@
   // #content의 paddingTop 조절
   const content_paddingTop = (px) => {
     document.documentElement.style.setProperty('--main-toppadding',`${px}`)
-    console.log(`#content 윗 padding '${px}' 만큼 조절`)
+    // console.log(`#content 윗 padding '${px}' 만큼 조절`)
   }
 
   frmSearch.addEventListener('submit',(e)=>{
