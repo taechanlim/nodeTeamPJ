@@ -1,32 +1,24 @@
+console.log('user/join .js')
 const join_Frm = document.querySelector('#user_join_frm')
 join_Frm.addEventListener('submit', async (e)=>{
   e.preventDefault()
   // 이쪽코드가 실행된다!
-  const userid = document.querySelector('#userid')
-  const userpw = document.querySelector('#userpw')
-  const username = document.querySelector('#username')
-  const nickname = document.querySelector('#nickname')
-  const address = document.querySelector('#address')
-  const gender = document.querySelector('input[name="gender"]:checked')
-  const telephone = document.querySelector('#telephone')
-  const phonenumber = document.querySelector('#phonenumber')
-  const email = document.querySelector('#email')
-  const introduce = document.querySelector('#introduce')
 
   const body = {
-    userid:userid.value,
-    userpw:userpw.value,
-    username:username.value,
-    nickname:nickname.value,
-    address:address.value,
-    gender:gender.value,
-    telephone:telephone.value,
-    phonenumber:phonenumber.value,
-    email:email.value,
-    introduce:introduce.value
+    userid:document.querySelector('#userid').value,
+    userpw:document.querySelector('#userpw').value,
+    profile_img:document.querySelector('#profile_img').value,
+    username:document.querySelector('#username').value,
+    nickname:document.querySelector('#nickname').value,
+    address:document.querySelector('#address').value,
+    gender:document.querySelector('input[name="gender"]:checked').value,
+    telephone:document.querySelector('#telephone').value,
+    phonenumber:document.querySelector('#phonenumber').value,
+    email:document.querySelector('#email').value,
+    introduce:document.querySelector('#introduce').value,
   }
 
-  console.log(body)
+  console.log('바디임',body)
   try {
     const response = await axios.post('http://localhost:4001/api/user/join',body,{
       'Content-type':'application/json',
