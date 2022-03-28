@@ -1,10 +1,11 @@
 {% extends "../publicTemplate/layout.html" %}
 {% block content %}
 <div id="board_view" style="padding-top: 50px;">
+
     제목 : <span id="subject"></span><br/>
-    닉네임 : <span id="nickname"></span> <br />
-    내용 : <br/>
+    닉네임 : <span id="nickname"></span> <br/>
+    내용 : <span id="content"></span>br/>
 </div>
-<h2><a href="/board/update?idx={idx}">글 수정하기</a></h2>
+<h2><a id="update_link" href="">글 수정하기</a></h2>
 <script type="text/javascript" src="/js/board/view.js"></script>
 {% endblock %}

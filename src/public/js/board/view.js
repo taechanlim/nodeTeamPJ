@@ -9,17 +9,19 @@ async function view(){
   const subjectBox = document.querySelector('#subject')
   const nicknameBox = document.querySelector('#nickname')
   const contentBox = document.querySelector('#content')
+  const updateBtn = document.querySelector('#update_link')
 
   const response = await axios.post(`http://localhost:4001/api/board/view?idx=${intIdx}`,{
     withCredentials:true,
   })
 
   if ( response.data.errno === 0) {
-    const [{subject,nickname,content}] = response.data.result
+    const [{subject,nickname,content,idx}] = response.data.result
     console.log(response.data)
     subjectBox.innerHTML = subject
     nicknameBox.innerHTML = nickname
     contentBox.innerHTML = content
+    updateBtn.href = `/board/update?idx=${idx}`
   } else {
 
   }
