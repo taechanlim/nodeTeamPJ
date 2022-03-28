@@ -27,3 +27,23 @@ async function view(){
   }
 }
 view()
+
+document.querySelector('#board_delete_form').addEventListener('submit', async(e)=>{
+  e.preventDefault()
+
+  const [,idx] = location.href.split('=') // []
+  const intIdx = parseInt(idx)
+  console.log(intIdx)
+
+  const idx_delete = document.querySelector('#idx_hidden')
+  idx_delete.value = intIdx
+
+  const body = {
+    idx:intIdx
+  }
+
+  const response = await axios.post(`http://localhost:4001/api/board/delete`, body,{
+    withCredentials:true,
+  })
+  location.href = `http://localhost:3000/board/list`
+})
