@@ -1,11 +1,14 @@
 {% extends "../publicTemplate/layout.html" %}
 {% block content %}
 <div id="board_view" style="padding-top: 50px;">
-
     제목 : <span id="subject"></span><br/>
     닉네임 : <span id="nickname"></span> <br/>
-    내용 : <span id="content"></span>br/>
+    내용 : <span id="content"></span><br/>
 </div>
 <h2><a id="update_link" href="">글 수정하기</a></h2>
+<form id="board_delete_form" method="post" action="http://localhost4001/api/board/delete">
+    <input id="idx_hidden" type="hidden" name="idx" value="">
+    <input id="delete_btn" type="submit" value="글 삭제하기">
+</form>
 <script type="text/javascript" src="/js/board/view.js"></script>
 {% endblock %}
