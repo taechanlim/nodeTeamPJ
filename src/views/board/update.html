@@ -1,4 +1,12 @@
 {% extends "../publicTemplate/layout.html" %}
 {% block content %}
-<h1>수정하기 페이지 입니다. 인풋은 곧.. 😢</h1>
+<div id="board_view" style="padding-top: 50px;">
+    <form id="board_update_form" method="post" action="http://localhost4001/api/board/update">
+        제목 : <input id="update_subject" name="subject" value="">
+        닉네임 : <span id="nickname"></span> <br/>
+        내용 : <input id="update_content" name="content" value=""><br/>
+        <input type="submit" value="수정하기">
+    </form>
+</div>
+<script type="text/javascript" src="/js/board/update.js"></script>
 {% endblock %}
