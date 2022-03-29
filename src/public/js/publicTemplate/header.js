@@ -68,7 +68,7 @@ logoutBtn.addEventListener('click',async (e)=>{
   let [cookies] = document.cookie.split('=')
 
   delCookie(cookies)
-
+  location.href = 'http://localhost:3000'
 })
 
 // 이름에 해당하는 쿠키 삭제
