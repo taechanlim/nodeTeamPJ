@@ -1,6 +1,6 @@
 console.log('보드리스트 확인')
 
-let test = {}
+let list = {}
 document.addEventListener('DOMContentLoaded',async ()=>{
   // 요청에대한 코드를 작성해서 결과물을 받아와야합니다.
   const response = await axios.post('http://localhost:4001/api/board/list',{
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
 
   // code
   const trElement = document.querySelector('#board_row').innerHTML // String .. replace()
-  test = {
+  list = {
     ...response
   }
   // const Nodes = response.data.result
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
   // current_page = 25 -> 21~29 3block
 
   // page
-  let page = 4; // 나의 현 페이지번호를 저장하는 변수
+  let page = 1; // 나의 현 페이지번호를 저장하는 변수
   const current_block = Math.ceil(page/block_article) // 1
 
   /*
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
     const clone = document.importNode(board_row.content,true)
     const td = clone.querySelectorAll('td')
     const aElement = document.createElement('a')
-    aElement.href = '/board/view/'+v.idx
+    aElement.href = '/board/view?idx='+v.idx
     aElement.innerHTML = v.subject
 
     td[0].innerHTML = v.idx
@@ -100,17 +100,29 @@ document.addEventListener('DOMContentLoaded',async ()=>{
 function pagemove(num){
   const trElement = document.querySelector('#board_row').innerHTML
   const view_article = 10;
-  const Nodes =  test.data.result.slice((num - 1) * view_article,num * view_article);
+  const Nodes =  list.data.result.slice((num - 1) * view_article,num * view_article);
 
   let template = ''
-  Nodes.forEach(v=>{
-    template += trElement.replace('{idx}',v.idx)
-      .replace('{subject}',v.subject)
-      .replace('{nickname}',v.nickname)
-      .replace('{date}',v.date)
-      .replace('{hit}',v.hit)
+  const board_row = document.querySelector('#board_row')
+  let tbody = document.querySelector('#board tbody')
+  tbody.innerHTML = template
+
+  Nodes.forEach(v => {
+    const clone = document.importNode(board_row.content,true)
+    const td = clone.querySelectorAll('td')
+    const aElement = document.createElement('a')
+    aElement.href = '/board/view?idx='+v.idx
+    aElement.innerHTML = v.subject
+
+    td[0].innerHTML = v.idx
+    td[1].appendChild(aElement)
+    td[2].innerHTML = v.nickname
+    td[3].innerHTML = v.date
+    td[4].innerHTML = v.hit
+
+    tbody.appendChild(clone)
   })
 
-  const tbody = document.querySelector('#board tbody')
-  tbody.innerHTML = template;
+  // const tbody = document.querySelector('#board tbody')
+  // tbody.innerHTML = template;
 }
