@@ -1,4 +1,5 @@
 console.log('user/join .js')
+// 회원가입 폼
 const join_Frm = document.querySelector('#user_join_frm')
 join_Frm.addEventListener('submit', async (e)=>{
   e.preventDefault()
@@ -43,4 +44,25 @@ join_Frm.addEventListener('submit', async (e)=>{
   //     ],
   // "errno": 0
   // }
+})
+
+// 아이디 중복체크 버튼
+const dupBtn = document.querySelector('#id_checkDuplication')
+dupBtn.addEventListener('click',async (e)=>{
+  const userid = document.querySelector('#userid').value
+
+  const body = {
+    userid:userid
+  }
+
+  try {
+    const response = await axios.post('http://localhost:4001/api/user/idcheck',body,{
+      'Content-type':'application/json',
+      withCredentials:true,
+    })
+    console.log(response.data)
+
+  } catch(e) {
+    console.log('! idcheck 오류\n ',e)
+  }
 })
