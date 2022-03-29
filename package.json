@@ -1,7 +1,6 @@
 {
   "name": "team5-front",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
@@ -20,6 +19,9 @@
   "dependencies": {
     "chokidar": "^3.5.3",
     "express": "^4.17.3",
-    "nunjucks": "^3.2.3"
-  }
+    "nunjucks": "^3.2.3",
+    "request": "^2.88.2"
+  },
+  "keywords": [],
+  "description": ""
 }
