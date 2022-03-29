@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/chi091/Team5-FRONT#readme",
   "dependencies": {
+    "axios": "^0.26.1",
     "chokidar": "^3.5.3",
     "express": "^4.17.3",
     "nunjucks": "^3.2.3",
+    "qs": "^6.10.3",
     "request": "^2.88.2"
   },
   "keywords": [],
