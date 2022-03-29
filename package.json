@@ -18,6 +18,7 @@
   "homepage": "https://github.com/chi091/Team5-FRONT#readme",
   "dependencies": {
     "chokidar": "^3.5.3",
+    "cors": "^2.8.5",
     "express": "^4.17.3",
     "nunjucks": "^3.2.3",
     "request": "^2.88.2"
