@@ -25,4 +25,22 @@ router.get('/mypage',(req,res)=>{
   res.render('./user/mypage')
 })
 
+// 로그아웃 클릭시 실행
+router.post('/api/logout',(req,res)=>{
+  const [,jwt] = req.body.cookies.split('=')
+  console.log(jwt)
+  const [,payload,] = jwt.split('.')
+  const decodingPayload = Buffer.from(payload,'base64').toString()
+  const nickname = JSON.parse(decodingPayload).nickname
+  console.log(nickname)
+
+  let response = {
+    nickname:nickname
+  }
+
+  response = {...response}
+
+  res.json(response)
+})
+
 module.exports = router

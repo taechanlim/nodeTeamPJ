@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const nunjucks = require('nunjucks')
 const router = require('./src/routes')
+const cors = require('cors')
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
@@ -11,6 +12,11 @@ nunjucks.configure('./src/views',{
   express:app,
   watch:true,
 })
+
+app.use(cors({
+  origin:true,
+  credentials:true,
+}))
 
 app.use(router)
 
