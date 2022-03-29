@@ -14,6 +14,6 @@ router.use('/board',boardRouter)
 router.use('/notice',noticeRouter)
 router.use('/qna',qnaRouter)
 router.use('/user',userRouter)
-router.use('/auth',authRouter)
+router.use('/kakao',authRouter)
 
 module.exports = router
