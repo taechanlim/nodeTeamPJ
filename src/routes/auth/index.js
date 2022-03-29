@@ -1,11 +1,12 @@
+require('dotenv').config()
 const express=require('express')
 const axios = require('axios')
 const qs = require('qs') //객체를 query형태로 바꿔주는 라이브러리 npm install qs
 const router = express.Router()
-const client_id = '' //https://developers.kakao.com/ <-여기들어가서 내 애플리케이션의 REST API 키
-const redirect_uri = 'http://localhost:3000/oauth/kakao'
+const client_id = process.env.REST_API_KEY //https://developers.kakao.com/ <-여기들어가서 내 애플리케이션의 REST API 키
+const redirect_uri = 'http://localhost:3000/kakao/oauth'
 const host = 'https://kauth.kakao.com'
-const client_secret = '' //https://developers.kakao.com/console/app/717771/product/login/security <- 여기접속
+const client_secret = process.env.CLIENT_SECRET_CODE //https://developers.kakao.com/console/app/717771/product/login/security <- 여기접속
 
 
 router.get('/',(req,res)=>{
@@ -17,7 +18,7 @@ router.get('/login',(req,res)=>{
     res.redirect(redirectURI)
 })
 
-router.get('/oauth/kakao',async (req,res)=>{
+router.get('/oauth',async (req,res)=>{
     // console.log(req.query.code) //인가코드
     const {code} = req.query
     const token_url = host+'/oauth/token'
@@ -54,7 +55,8 @@ router.get('/oauth/kakao',async (req,res)=>{
         console.log(e)
     }
 
-    res.send('로그인 성공')
+    // res.send('로그인 성공')
+    // res.redirect('/')
 })
 
 
