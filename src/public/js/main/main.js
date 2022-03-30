@@ -12,20 +12,18 @@ const header_height = window.getComputedStyle(document.querySelector('#header_wr
 const content_paddingTop = (px) => {
   console.log(px)
   document.documentElement.style.setProperty('--main-toppadding',`${px}px`)
-  console.log(`#content 윗 padding '${px}' 만큼 조절`)
+  // console.log(`#content 윗 padding '${px}' 만큼 조절`)
 }
 
-frmSearch.addEventListener('submit',(e)=>{
+inputTagSearch.addEventListener('click',(e) => {
+  fbWrap.style.opacity = '1'
+  fbWrap.style.visibility = 'visible'
+  fbWrap.style.transform = `translateY( 0px )`
+  content_paddingTop(floatPx(header_height)+floatPx(fbWrap_margin)+floatPx(fbWrap_height))
+})
+
+frmSearch.addEventListener('submit',(e) => {
   e.preventDefault()
-  inputTagSearch.addEventListener('keyup',(e) => {
-    if (e.keyCode === 13  ) {
-      fbWrap.style.opacity = '1'
-      fbWrap.style.visibility = 'visible'
-      fbWrap.style.transform = `translateY( 0px )`
-      content_paddingTop(floatPx(header_height)+floatPx(fbWrap_margin)+floatPx(fbWrap_height))
-    }
-  })
-  // code
 })
 
 // 닫기버튼 누를시 태그검색에 내용이 들어가 있어도 강제로 닫음

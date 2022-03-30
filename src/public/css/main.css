@@ -59,7 +59,7 @@ ul,li{list-style: none;}
 
 /* header_board.html */
 #free_board_wrap {
-    background: blue;
+    background: lightyellow;
     height: var(--free-board-height);
     width: 100%;
     max-width: 1200px;
