@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
   })
 
   // code
-  const trElement = document.querySelector('#board_row').innerHTML // String .. replace()
+  const trElement = document.querySelector('#board_list > #board_row').innerHTML // String .. replace()
   list = {
     ...response
   }
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
   // 게시물 자르기
   const Nodes =  response.data.result.slice((page - 1) * view_article,page * view_article);
   // splice(0,10)
-  const board_row = document.querySelector('#board_row')
+  const board_row = document.querySelector('#board_list > #board_row')
   const tbody = document.querySelector('#board tbody')
   console.log(board_row.content)
   Nodes.forEach(v => {
@@ -98,12 +98,12 @@ document.addEventListener('DOMContentLoaded',async ()=>{
 })
 
 function pagemove(num){
-  const trElement = document.querySelector('#board_row').innerHTML
+  const trElement = document.querySelector('#board_list > #board_row').innerHTML
   const view_article = 10;
   const Nodes =  list.data.result.slice((num - 1) * view_article,num * view_article);
 
   let template = ''
-  const board_row = document.querySelector('#board_row')
+  const board_row = document.querySelector('#board_list > #board_row')
   let tbody = document.querySelector('#board tbody')
   tbody.innerHTML = template
 

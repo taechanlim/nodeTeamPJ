@@ -1,3 +1,4 @@
+console.log('헤더')
 addEventListener('DOMContentLoaded',(e)=>{
 
 })
