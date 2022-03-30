@@ -57,16 +57,16 @@ ul,li{list-style: none;}
     height: 50%;
 }
 
-/* board.html */
+/* header_board.html */
 #free_board_wrap {
-    background: blue;
+    background: lightyellow;
     height: var(--free-board-height);
     width: 100%;
     max-width: 1200px;
     position: absolute;
     z-index: 1;
     /*top: 0;*/
-    transform: translateY( -200px );
+    transform: translateY( -250px );
     opacity: 0;
     visibility: visible;
 }
