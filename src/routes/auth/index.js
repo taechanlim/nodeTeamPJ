@@ -7,7 +7,8 @@ const client_id = process.env.REST_API_KEY //https://developers.kakao.com/ <-여
 const redirect_uri = 'http://localhost:3000/kakao/oauth'
 const host = 'https://kauth.kakao.com'
 const client_secret = process.env.CLIENT_SECRET_CODE //https://developers.kakao.com/console/app/717771/product/login/security <- 여기접속
-
+const logout_redirect_uri = 'http://localhost:3000/kakao/logout/auth'
+const Admin_Key = process.env.ADMIN_KEY
 
 router.get('/',(req,res)=>{
     res.render('index')
@@ -56,8 +57,40 @@ router.get('/oauth',async (req,res)=>{
     }
 
     // res.send('로그인 성공')
-    // res.redirect('/')
+    // res.send(response)
+    res.redirect('/')
 })
+
+router.get('/logout',(req,res)=>{
+    const redirectURI = host + `/oauth/logout?client_id=${client_id}&logout_redirect_uri=${logout_redirect_uri}`
+    res.redirect(redirectURI)
+})
+
+router.get('/logout/auth',(req,res)=>{
+    res.redirect('/')
+})
+
+
+// router.post('/logout/auth',async (req,res)=>{
+//     const {code} = req.query
+//     const url = "https://kapi.kakao.com/v1/user/logout"
+//     const headers = {
+//         "Content-type":"application/x-www-form-urlencoded",
+//         'Authorization':`KakaoAK ${Admin_Key}`
+//     }
+    
+//     const body = qs.stringify({
+//         grant_type:'authorization_code',
+//         client_id:client_id,
+//         logout_redirect_uri:logout_redirect_uri,
+//         code:code,
+//         client_secret:client_secret,
+//     }) 
+//     const response = await axios.post(url,body,headers)
+//     console.log(response)
+// })
+
+
 
 
 module.exports = router
