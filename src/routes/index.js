@@ -7,7 +7,8 @@ const noticeRouter = require('./notice')
 const qnaRouter = require('./qna')
 const userRouter = require('./user')
 const authRouter = require('./auth')
-const {alertmove} = require('../../utils/alert.js')
+const testRouter = require('./test')
+const {alertmove} = require('../public/util/alert.js')
 
 
 const board_access = (req,res,next)=>{
@@ -26,6 +27,8 @@ router.use('/notice',noticeRouter)
 router.use('/qna',qnaRouter)
 router.use('/user',userRouter)
 router.use('/kakao',authRouter)
+
+router.use('/test',testRouter)
 
 
 module.exports = router
