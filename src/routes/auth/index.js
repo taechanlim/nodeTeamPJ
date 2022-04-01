@@ -51,7 +51,11 @@ router.get('/oauth',async (req,res)=>{
         })
         // console.log(user.data.kakao_account.profile.nickname) //로그인한유저 닉네임
         // console.log(user.data.kakao_account.profile.profile_image_url) //로그인한유저 프로필사진
-
+        res.cookie('token',ACCESS_TOKEN,{
+            path:'/', 
+            secure:true,
+            domain:'localhost'
+        })
     }catch(e){
         console.log(e)
     }
@@ -67,6 +71,7 @@ router.get('/logout',(req,res)=>{
 })
 
 router.get('/logout/auth',(req,res)=>{
+    res.clearCookie('token')
     res.redirect('/')
 })
 
