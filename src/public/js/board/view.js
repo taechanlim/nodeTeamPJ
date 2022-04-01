@@ -47,3 +47,15 @@ document.querySelector('#board_delete_form').addEventListener('submit', async(e)
   })
   location.href = `http://localhost:3000/board/list`
 })
+
+// 글 보기에서 좋아요 버튼
+document.querySelector('#btn_like').addEventListener('click',async(e)=>{
+
+  // const response = await
+})
+
+document.addEventListener('DOMContentLoaded', async (req,res)=>{
+  const response = await axios.post('http://localhost:4001/api/board/list',{
+    withCredentials:true,
+  })
+})
