@@ -42,6 +42,7 @@ router.get('/oauth',async (req,res)=>{
     //3.토큰을 활용하여 사용자정보 가져오기
     try{
         const {access_token:ACCESS_TOKEN} = response.data
+        
         const url = 'https://kapi.kakao.com/v2/user/me'
 
         const user = await axios.post(url,null,{
@@ -59,41 +60,51 @@ router.get('/oauth',async (req,res)=>{
     }catch(e){
         console.log(e)
     }
-
-    // res.send('로그인 성공')
-    // res.send(response)
+    
     res.redirect('/')
 })
 
+
+
+//카카오계정과함께 로그아웃
 router.get('/logout',(req,res)=>{
     const redirectURI = host + `/oauth/logout?client_id=${client_id}&logout_redirect_uri=${logout_redirect_uri}`
     res.redirect(redirectURI)
 })
 
-router.get('/logout/auth',(req,res)=>{
-    res.clearCookie('token')
-    res.redirect('/')
-})
 
 
 // router.post('/logout/auth',async (req,res)=>{
-//     const {code} = req.query
-//     const url = "https://kapi.kakao.com/v1/user/logout"
-//     const headers = {
-//         "Content-type":"application/x-www-form-urlencoded",
-//         'Authorization':`KakaoAK ${Admin_Key}`
-//     }
+    //     const ACCESS_TOKEN = req.header.cookie
+    //     console.log(req.header.cookie)
+    //     const url = "https://kapi.kakao.com/v1/user/logout"
+        
+    //     const response = await axios.post(url,null,{
+    //         headers:{
+    //             "Content-type":"application/x-www-form-urlencoded",
+    //             'Authorization':`Bearer ${ACCESS_TOKEN}`
+    //         }
+    //     })
+    //     console.log(response.data)
+        
+        
+    // })
+
+router.get('/logout/auth',async (req,res)=>{
+    const ACCESS_TOKEN = req.headers.cookie.split('=')[1]
+    const url = "https://kapi.kakao.com/v1/user/logout"
     
-//     const body = qs.stringify({
-//         grant_type:'authorization_code',
-//         client_id:client_id,
-//         logout_redirect_uri:logout_redirect_uri,
-//         code:code,
-//         client_secret:client_secret,
-//     }) 
-//     const response = await axios.post(url,body,headers)
-//     console.log(response)
-// })
+    const response = await axios.post(url,null,{
+        headers:{
+            "Content-type":"application/x-www-form-urlencoded",
+            'Authorization':`Bearer ${ACCESS_TOKEN}`
+        }
+    })
+    console.log(response.data)
+    
+    res.clearCookie('token')
+    res.redirect('/')
+})
 
 
 
