@@ -28,5 +28,5 @@
     "request": "^2.88.2"
   },
   "keywords": [],
-  "description": ""
+  "description": "*카카오 REST_API_KEY     *카카오 CLIENT_SECRET_CODE"
 }
