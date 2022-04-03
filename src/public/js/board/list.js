@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
     td[2].innerHTML = v.nickname
     td[3].innerHTML = v.date
     td[4].innerHTML = v.hit
+    td[5].innerHTML = v.like
 
     tbody.appendChild(clone)
   })
@@ -120,6 +121,7 @@ function pagemove(num){
     td[2].innerHTML = v.nickname
     td[3].innerHTML = v.date
     td[4].innerHTML = v.hit
+    td[5].innerHTML = v.like
 
     tbody.appendChild(clone)
   })

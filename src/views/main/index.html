@@ -4,58 +4,10 @@
 
 </script>
 <div id="content">
-    <h1><a href="/">안녕??😘😘</a></h1>
-    <h2>로그인 인풋이 들어갈거야... 로그인되면 hidden 될거야..카카오도 마찬가지</h2>
-    <h2><a href="user/mypage">로그인되면 요게 보일거야</a></h2>
-    <h2><a href="user/welcome">로그인이나 회원가입하면 여기로 갈거야</a></h2>
-    <h2><a href="/kakao/login">카카오 로그인</a></h2>
-    <h2><a href="/user/join">회원가입</a></h2>
-    <h2><a href="/admin/index">관리자 페이지</a></h2>
-    <h2><a href="/notice/list">공지사항</a></h2>
-    <h2><a href="/qna/list">Q&A</a></h2>
-    <h1>업비트 api</h1>
     <div id="upbit">
-
+        <h1>업비트 api</h1>
+        <h2><span></span></h2>
+        <h1>업비트 api</h1><h1>업비트 api</h1><h1>업비트 api</h1><h1>업비트 api</h1><h1>업비트 api</h1><h1>업비트 api</h1><h1>업비트 api</h1><h1>업비트 api</h1><h1>업비트 api</h1><h1>업비트 api</h1><h1>업비트 api</h1>
     </div>
 </div>
-<!-- highChart test -->
-<script src="/util/Highcharts-Stock-10.0.0/code/highstock.js"></script>
-<script src="/util/Highcharts-Stock-10.0.0/code/modules/data.js"></script>
-<script src="/util/Highcharts-Stock-10.0.0/code/modules/exporting.js"></script>
-    <div id="container" style="height:400px; min-width:310px;"></div>
-    <script type="text/javascript">
-      Highcharts.getJSON('https://demo-live-data.highcharts.com/aapl-ohlc.json', function (data) {
-
-        // create the chart
-        Highcharts.stockChart('container', {
-
-
-          rangeSelector: {
-            selected: 1
-          },
-
-          title: {
-            text: 'AAPL Stock Price'
-          },
-
-          series: [{
-            type: 'candlestick',
-            name: 'AAPL Stock Price',
-            data: data,
-            dataGrouping: {
-              units: [
-                [
-                  'week', // unit name
-                  [1] // allowed multiples
-                ], [
-                  'month',
-                  [1, 2, 3, 4, 6]
-                ]
-              ]
-            }
-          }]
-        });
-      });
-
-    </script>
 {% endblock %}

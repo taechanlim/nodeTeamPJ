@@ -6,9 +6,28 @@
     내용 : <span id="content"></span><br/>
 </div>
 <h2><a id="update_link" href="">글 수정하기</a></h2>
+<button id="btn_like"><span>좋아요 버튼</span></button>
 <form id="board_delete_form" method="post" action="http://localhost4001/api/board/delete">
     <input id="idx_hidden" type="hidden" name="idx" value="">
     <input id="delete_btn" type="submit" value="글 삭제하기">
 </form>
+<form id="comment_board_form" method="post" action="#">
+    <input id="input_comment" type="text" name="content">
+    <input type="submit" value="작성">
+</form>
+<table>
+    <tbody>
+
+    </tbody>
+</table>
+
+<template id="comment_board">
+    <tr>
+        <input type="hidden" name="comment_idx" value="{comment_idx}">
+        <td></td>
+        <td><button id="btn_comment_recommend" type="button"><span>좋아용</span></button></td>
+    </tr>
+</template>
+
 <script type="text/javascript" src="/js/board/view.js"></script>
 {% endblock %}

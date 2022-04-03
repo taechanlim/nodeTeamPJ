@@ -70,6 +70,7 @@ const init = () => {
 }
 init()
 
+
 let socket; // 소켓
 // 웹소켓 연결
 function connectWS() {
@@ -117,3 +118,4 @@ function filterRequest(filter) {
   socket.send(filter);
 }
 connectWS();
+
