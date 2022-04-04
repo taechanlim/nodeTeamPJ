@@ -30,8 +30,7 @@ async function view(){
 }
 view()
 
-document.querySelector('#board_delete_form').addEventListener('submit', async(e)=>{
-  e.preventDefault()
+document.querySelector('#delete_btn').addEventListener('click', async(e)=>{
 
   const [,idx] = location.href.split('=') // []
   const intIdx = parseInt(idx)
