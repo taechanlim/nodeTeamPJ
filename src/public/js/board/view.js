@@ -6,8 +6,8 @@ async function view(){
   const [,idx] = location.href.split('=') // []
   const intIdx = parseInt(idx)
   // console.log(intIdx)
-  const [,,nickname] = location.href.split('?')
-  
+  const [,nickname] = location.href.split('?')
+  console.log(nickname)
   const subjectBox = document.querySelector('#subject')
   const nicknameBox = document.querySelector('#nickname')
   const contentBox = document.querySelector('#content')
