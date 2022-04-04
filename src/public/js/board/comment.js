@@ -4,7 +4,23 @@ document.addEventListener('DOMContentLoaded',async (e)=>{
     withCredentials:true,
   })
 
-  console.log(response.data)
+  console.log(response.data.result)
+
+  const Nodes =  response.data.result
+  const comment_row = document.querySelector('#comment_board')
+  const tbody = document.querySelector('#board_view tbody')
+
+  Nodes.forEach(v => {
+    const clone = document.importNode(comment_row.content,true)
+    const td = clone.querySelectorAll('td')
+
+    td[0].innerHTML = v.nickname
+    td[1].innerHTML = v.comment
+    td[2].innerHTML = v.recommend
+    td[3].innerHTML = v.date
+
+    tbody.appendChild(clone)
+  })
 })
 
 const commentFrm = document.querySelector('#write_comment_board_form')
