@@ -74,4 +74,3 @@ commentFrm.addEventListener('submit',async (e)=>{
 //   console.log(e.target)
 // })
 
-
