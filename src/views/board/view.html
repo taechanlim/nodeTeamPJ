@@ -11,8 +11,8 @@
     <input id="idx_hidden" type="hidden" name="idx" value="">
     <input id="delete_btn" type="submit" value="글 삭제하기">
 </form>
-<form id="comment_board_form" method="post" action="#">
-    <input id="input_comment" type="text" name="content">
+<form id="write_comment_board_form" method="post" action="http://localhost:4001/api/comment/write">
+    <input id="input_comment" type="text" name="content" placeholder="댓글창입니다.">
     <input type="submit" value="작성">
 </form>
 <table>
@@ -23,11 +23,11 @@
 
 <template id="comment_board">
     <tr>
-        <input type="hidden" name="comment_idx" value="{comment_idx}">
         <td></td>
-        <td><button id="btn_comment_recommend" type="button"><span>좋아용</span></button></td>
+        <td><button id="btn_comment_recommend" type="button"><span>댓글 좋아요</span></button></td>
     </tr>
 </template>
 
 <script type="text/javascript" src="/js/board/view.js"></script>
+<script type="text/javascript" src="/js/board/comment.js"></script>
 {% endblock %}
