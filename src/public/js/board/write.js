@@ -6,14 +6,19 @@ board_Frm.addEventListener('submit', async (e)=>{
   const subject = document.querySelector('#board_subject')
   const content = document.querySelector('#board_content')
 
-  const body = {
-    cate_name:cate_name.value,
-    subject:subject.value,
-    content:content.value
-  }
+
+  const formData = new FormData()
+  formData.append('cate_name',cate_name.value)
+  formData.append('subject',subject.value)
+  formData.append('content',content.value)
+  formData.append('img',img.files[0])
+  formData.append('img',img.files[1])
+  formData.append('img',img.files[2])
+  formData.append('img',img.files[3])
+
   console.log(body)
   try {
-    const response = await axios.post('http://localhost:4001/api/board/write',body,{
+    const response = await axios.post('http://localhost:4001/api/board/write',formData,{
       'Content-type':'application/json',
       withCredentials:true,
     })
