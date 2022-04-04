@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded',async (e)=>{
-
-  const response = await axios.post('http://localhost:4001/api/comment/list', {
+  const [,idx] = location.href.split('=') // []
+  const intIdx = parseInt(idx)
+  const body={intIdx}
+  const response = await axios.post('http://localhost:4001/api/comment/list',body, {
     withCredentials:true,
   })
 
