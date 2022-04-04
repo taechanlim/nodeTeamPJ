@@ -2,19 +2,16 @@ const board_Frm = document.querySelector('#board_write_Frm')
 board_Frm.addEventListener('submit', async (e)=>{
   e.preventDefault()
   // 이쪽코드가 실행된다!
-  const cate_name = document.querySelector('#board_cate_name')
-  const subject = document.querySelector('#board_subject')
-  const content = document.querySelector('#board_content')
-
+  const { cate_name, subject, content, board_img1, board_img2, board_img3, board_img4 } = e.target
 
   const formData = new FormData()
   formData.append('cate_name',cate_name.value)
   formData.append('subject',subject.value)
   formData.append('content',content.value)
-  formData.append('img',img.files[0])
-  formData.append('img',img.files[1])
-  formData.append('img',img.files[2])
-  formData.append('img',img.files[3])
+  formData.append('board_img1',board_img1.files[0])
+  formData.append('board_img2',board_img2.files[1])
+  formData.append('board_img3',board_img3.files[2])
+  formData.append('board_img4',board_img4.files[3])
 
   console.log(body)
   try {
