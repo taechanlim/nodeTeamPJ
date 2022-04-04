@@ -1,22 +1,71 @@
 {% extends "../publicTemplate/layout.html" %}
 {% block content %}
-<div id="content">
+<div id="join_frm" style="padding-top: 50px;">
     <form id="user_join_frm" method="post" action="http://localhost:4001/api/user/join" enctype="multipart/form-data">
-        <input id="userid" type="text" name="userid" placeholder="아이디"/>
-        <button id="id_checkDuplication" type="button" value="">중복확인</button>
-        <input type="hidden" name="idDuplicate" value="">
-        <input id="userpw" type="password" name="userpw" placeholder="비밀번호">
-        <input id="profile_img" type="file" name="img">
-        <input id="username" type="text" name="username" placeholder="이름">
-        <input id="nickname" type="text" name="nickname" placeholder="별명">
-        <input id="address" type="text" name="address" placeholder="주소">
-        <input id="gender1" type="radio" name="gender" value="M">남
-        <input id="gender2" type="radio" name="gender" value="W">여
-        <input id="telephone" type="text" name="telephone" placeholder="전화번호">
-        <input id="phonenumber" type="text" name="phonenumber" placeholder="핸드폰번호">
-        <input id="email" type="text" name="email" placeholder="이메일">
-        <textarea id="introduce" type="textarea" name="introduce" placeholder="자기소개"></textarea>
-        <input type="submit" value="회원가입">
+        <div class="join_group" style="width: 460px">
+            <h3>아이디</h3>
+            <span class="ps_box box_userid">
+                <input id="userid" type="text" name="userid" placeholder="아이디"/>
+                <!--<button id="id_checkDuplication" type="button" value="">중복확인</button>-->
+                <input type="hidden" name="idDuplicate" value="">
+            </span>
+            <h3>비밀번호</h3>
+            <span class="ps_box">
+                <input id="userpw" type="password" name="userpw" placeholder="비밀번호">
+                <span class="pwd_img"></span>
+            </span>
+        </div>
+        <div class="join_group" style="width: 460px; margin-top: 50px">
+            <h3>이름</h3>
+            <span class="ps_box">
+                <input id="username" type="text" name="username" placeholder="이름">
+            </span>
+            <h3>별명</h3>
+            <span class="ps_box">
+                <input id="nickname" type="text" name="nickname" placeholder="별명">
+            </span>
+            <h3>프로필 사진</h3>
+            <span class="ps_box">
+                <input id="profile_img" type="file" name="img">
+            </span>
+            <h3>성별</h3>
+            <span class="ps_box">
+                <label for="gender"></label>
+                <select class="ps_select_gender" id="gender" name="gender">
+                    <option value="default">성별</option>
+                    <option value="M">남자</option>
+                    <option value="W">여자</option>
+                </select>
+            </span>
+        </div>
+        <div class="join_group" style="width: 460px; margin-top: 50px">
+            <h3>본인 확인 이메일<span>(선택)</span></h3>
+            <span class="ps_box">
+                <input id="email" type="text" name="email" placeholder="이메일">
+            </span>
+            <h3>전화번호<span>(선택)</span></h3>
+            <span class="ps_box">
+                <input id="telephone" type="text" name="telephone" placeholder="전화번호">
+            </span>
+            <h3>핸드폰번호<span>(선택)</span></h3>
+            <span class="ps_box">
+                <input id="phonenumber" type="text" name="phonenumber" placeholder="핸드폰번호">
+            </span>
+            <h3>주소<span>(선택)</span></h3>
+            <span class="ps_box">
+                 <input id="address" type="text" name="address" placeholder="주소">
+            </span>
+            <h3>자기소개<span></span></h3>
+            <span class="ps_box">
+                 <textarea id="introduce" type="textarea" name="introduce" placeholder="자기소개"></textarea>
+            </span>
+        </div>
+        <div class="btn-area" style="width: 460px; margin-top: 50px">
+            <a href="#" class="join_btn">
+                <span>가입하기</span>
+            </a>
+            <input type="submit" value="회원가입">
+        </div>
     </form>
 </div>
 <script type="text/javascript" src="/js/user/join.js"></script>
