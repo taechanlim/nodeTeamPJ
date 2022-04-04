@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
     const td = clone.querySelectorAll('td')
     const aElement = document.createElement('a')
     
-    aElement.href = '/board/view?idx='+v.idx+'?'+v.nickname
+    aElement.href = '/board/view?idx='+v.idx+'&'+'nickname='+v.nickname
     aElement.innerHTML = v.subject
 
     td[0].innerHTML = v.idx
@@ -113,7 +113,7 @@ function pagemove(num){
     const clone = document.importNode(board_row.content,true)
     const td = clone.querySelectorAll('td')
     const aElement = document.createElement('a')
-    aElement.href = '/board/view?idx='+v.idx+'?'+v.nickname
+    aElement.href = '/board/view?idx='+v.idx+'&'+'nickname='+v.nickname
     aElement.innerHTML = v.subject
 
     td[0].innerHTML = v.idx
