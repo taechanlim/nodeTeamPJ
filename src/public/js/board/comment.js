@@ -1,27 +1,43 @@
-document.addEventListener('DOMContentLoaded',async (e)=>{
+document.addEventListener('DOMContentLoaded', abc)
 
+async function abc(e) {
   const response = await axios.post('http://localhost:4001/api/comment/list', {
     withCredentials:true,
   })
+  // console.log(response.data.result)
 
-  console.log(response.data.result)
-
+  let template = ''
   const Nodes =  response.data.result
-  const comment_row = document.querySelector('#comment_board')
+  const comment_board = document.querySelector('#comment_board')
   const tbody = document.querySelector('#board_view tbody')
+  tbody.innerHTML = template
 
   Nodes.forEach(v => {
-    const clone = document.importNode(comment_row.content,true)
-    const td = clone.querySelectorAll('td')
+    const clone = document.importNode(comment_board.content,true)
 
-    td[0].innerHTML = v.nickname
-    td[1].innerHTML = v.comment
-    td[2].innerHTML = v.recommend
-    td[3].innerHTML = v.date
+    const col = clone.querySelectorAll('td')
+
+    col[0].innerHTML = v.nickname
+    col[1].innerHTML = v.comment
+    col[2].innerHTML = v.recommend
+    col[3].innerHTML = v.date
+    col[4].querySelector('input').value = v.comment_idx
+
+    col[5].addEventListener('click', async (e)=>{
+      console.log(col[4].querySelector('input').value)
+      const body = {
+        comment_idx:col[4].querySelector('input').value
+      }
+      const response = await axios.post('http://localhost:4001/api/comment/delete', body, {
+        withCredentials:true,
+      })
+      await abc()
+      // console.log(response.data.result)
+    })
 
     tbody.appendChild(clone)
   })
-})
+}
 
 const commentFrm = document.querySelector('#write_comment_board_form')
 commentFrm.addEventListener('submit',async (e)=>{
@@ -40,4 +56,22 @@ commentFrm.addEventListener('submit',async (e)=>{
   })
 
   console.log(response.data)
+
+  await abc()
 })
+
+// window.onload = () => {
+//   document.querySelector('.comment_delete_btn').addEventListener('click', (e)=> {
+//     // const comment_idx = e.target.parentNode.querySelector('.comment_idx').value
+//     // console.log(comment_idx)
+//     console.log(e.target)
+//   })
+// }
+
+// document.querySelector('table').addEventListener('click', (e)=>{
+//   const comment_idx = e.target.parentNode.querySelector('.comment_idx')
+//   console.log(comment_idx)
+//   console.log(e.target)
+// })
+
+
