@@ -2,10 +2,14 @@
 {% block content %}
 <h1>글쓰기 페이지야 인풋은 곧 넣겠습니다...😢</h1>
 <!-- 카테고리네임, 제목, 컨텐트 (test) -->
-<form id="board_write_Frm" method="post" action="http://localhost:4001/board/write" style="padding-top: 50px;">
+<form id="board_write_Frm" method="post" action="http://localhost:4001/board/write" enctype="multipart/form-data" style="padding-top: 50px;">
     <input id="board_cate_name" type="text" name="cate_name" placeholder="카테고리네임">
     <input id="board_subject" type="text" name="subject" placeholder="제목">
     <input id="board_content" type="text" name="content" placeholder="컨텐트">
+    <input type="file" name="upload1">
+    <input type="file" name="upload2">
+    <input type="file" name="upload3">
+    <input type="file" name="upload4">
     <input type="submit" value="전송">
 </form>
 <script type="text/javascript" src="/js/board/write.js"></script>
