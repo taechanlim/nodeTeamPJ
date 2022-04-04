@@ -9,10 +9,12 @@ const userRouter = require('./user')
 const authRouter = require('./auth')
 const testRouter = require('./test')
 const {alertmove} = require('../public/util/alert.js')
+const jwtDecode = require('jwt-decode');
 
+const userAccess = (req,res,next)=>{
+    let token = jwtDecode(req.cookies.token) //user level등급을 부여하면 등급별 권한을 조절할수있다.(응용방법)
+    // console.log(token)
 
-const board_access = (req,res,next)=>{
-    let token = req.headers.cookie //user level등급을 부여하면 등급별 권한을 조절할수있다.(응용방법)
     if(token != undefined){
        next()
     }else{
@@ -22,7 +24,7 @@ const board_access = (req,res,next)=>{
 
 router.use('/',mainRouter)
 router.use('/admin',adminRouter)
-router.use('/board',board_access,boardRouter)
+router.use('/board',userAccess,boardRouter)
 router.use('/notice',noticeRouter)
 router.use('/qna',qnaRouter)
 router.use('/user',userRouter)

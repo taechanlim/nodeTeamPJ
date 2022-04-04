@@ -3,10 +3,12 @@ const app = express()
 const nunjucks = require('nunjucks')
 const router = require('./src/routes')
 const cors = require('cors')
+const cookieParser = require('cookie-parser')
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(express.static('./src/public'))
+app.use(cookieParser())
 app.set('view engine', 'html')
 nunjucks.configure('./src/views',{
   express:app,
