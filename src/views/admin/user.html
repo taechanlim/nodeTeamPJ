@@ -1,4 +1,73 @@
-{% extends "../template/layout.html" %}
+<!-- {% extends "../template/layout.html" %}
 {% block content %}
 <h1>여긴 관리자의 유저 관리 페이지야</h1>
 {% endblock %}
+
+회원정보수정  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>memebership info</title>
+    <!-- <link href="/admin.css" rel="stylesheet" type="text/css"> -->
+</head>
+<body id="admin_info">
+    {% include "../nunjucks/header.html" %}
+    <div id="wrap">
+        <h3 id="list_pagename">관리자의 회원 정보 수정 페이지</h3>
+        <div class="member_info">
+            <p>아이디: <span>{{rows.userid}}</span></p>
+            <p>비밀번호: <span>{{rows.userpw}}</span></p>
+            <p>이름: <span>{{rows.username}}</span></p>
+            <p>닉네임: <span>{{rows.nickname}}</span></p>
+            <p>생년월일: <span>{{rows.birth}}</span></p>
+            <p>성별: <span>{{rows.gender}}</span></p>
+            {% if user.phone %}
+            <p>전화번호: <span>{{rows.phone}}</span></p>
+            {% else %}
+            <p>전화번호: <span>없음</span></p>
+            {% endif %}
+            <p>핸드폰번호: <span>{{rows.mobile}}</span></p>
+            <p>등급: <span>{{rows.level}}</span></p>
+            <p>이용가능: <span>{{rows.access}}</span></p> 
+            {% if rows.level != 1 %}
+            <form method="post" action="/admin/info">
+                <p>등급변경 : 
+                    <select name="level">
+                        <option>1</option>
+                        <option>2</option>
+                    </select>
+                </p>
+                <p>
+                    닉네임 변경은 할까 말까 고민중:
+                    <select name = "nickname">
+                       <div> <input type="text" id="input"> 수정 할 카테고리 <span id="result"></span>
+                                <script>
+                                  input.oninput = function() {
+                                    result.innerHTML = input.value;
+                                  };
+                                  </script>
+                     </select>
+                </p>
+                <p>이용가능여부변경 : 
+                    <select name="active">
+                        <option>true</option>
+                        <option>false</option>
+                    </select>
+                </p>
+                <input type="hidden" name="userid" value="{{rows.userid}}">
+                <button type="submit">변경하기</button>
+            </form>
+            {% endif %}       
+        </div>
+        <div class="level_button">
+            <button><a href="../admin/board.html">관리자의 게시물, 카테고리 수정 페이지</a></button>
+            <button><a href="../admin/index.html">관리자 메인 페이지</a></button>
+        </div>
+    </div>
+    
+    {% include "../nunjucks/footer.html" %}
+</body>
+</html>
