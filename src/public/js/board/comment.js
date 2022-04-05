@@ -1,7 +1,16 @@
 document.addEventListener('DOMContentLoaded', abc)
 
 async function abc(e) {
-  const response = await axios.post('http://localhost:4001/api/comment/list', {
+  const url = new URL(window.location)
+  const urlParams = url.searchParams
+
+  console.log(parseInt(urlParams.get('idx')))
+
+  const body = {
+    intidx:urlParams.get('idx')
+  }
+
+  const response = await axios.post('http://localhost:4001/api/comment/list', body, {
     withCredentials:true,
   })
   // console.log(response.data.result)
