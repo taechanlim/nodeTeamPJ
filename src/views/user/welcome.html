@@ -5,23 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
-    <link href="/u_welcome.css" rel="stylesheet" type="text/css">
+    
 </head>
 <body>
-    {% include "../nunjucks/header.html" %}
+    
     <div id="welcome_wrap">
         <h3 id="pagename">🌝 Welcome to our New members! 🌝</h3>
         <div class="join_info">
-            <p>"<span>{{info.nickname}}</span>"님 반갑습니다.</p>
-            <p> ID <span>{{info.userid}}</span></p>
-            <p> NAME <span>{{info.username}}</span></p>
-            <p> GENDER <span>{{info.gender}}</span></p>
-            {% if info.phone %}
-            <p> PHONE <span>{{info.phone}}</span></p>
-            {% else %}
-            <p> PHONE 없음</p>
-            {% endif %}
-            <p> H-PHONE <span>{{info.mobile}}</span></p>        
+            <p>"<span id="nickname"></span>"님 반갑습니다.</p>
+            <p> ID <span id="userid"></span></p>
+            <p> NAME <span id="username"></span></p>
+            <p> GENDER <span id="gender"></span></p>
+            <p> PHONE <span id="phonenumber"></span></p>
+                   
         </div>
         <div class="button">
             <button><a href="/">home</a></button>
@@ -29,7 +25,7 @@
         </div>
     </div>
     
-    {% include "../nunjucks/footer.html" %}
+    <!-- welcome.js만들기 -->
 </body>
 </html>
     
