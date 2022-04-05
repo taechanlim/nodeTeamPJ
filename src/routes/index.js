@@ -12,18 +12,32 @@ const {alertmove} = require('../public/util/alert.js')
 const jwtDecode = require('jwt-decode');
 
 const userAccess = (req,res,next)=>{
-    let token = jwtDecode(req.cookies.token) //user level등급을 부여하면 등급별 권한을 조절할수있다.(응용방법)
+    try{
+    let token = jwtDecode(req.cookies.token)
     // console.log(token)
-
-    if(token != undefined){
-       next()
-    }else{
+    if(token){
+        next()
+    }
+    }catch(e){
         res.send(alertmove('/','회원만 가능한 기능입니다'))
     }
 }
 
+
+const adminAccess = (req,res,next)=>{
+    try{
+    let token = jwtDecode(req.cookies.token)
+    const userlevel = token.level
+    if(userlevel == 3){
+        next()
+    }
+    }catch(e){
+        res.send(alertmove('/','관리자만 가능한 기능입니다'))
+    }
+}
+
 router.use('/',mainRouter)
-router.use('/admin',adminRouter)
+router.use('/admin',adminAccess,adminRouter)
 router.use('/board',userAccess,boardRouter)
 router.use('/notice',noticeRouter)
 router.use('/qna',qnaRouter)
