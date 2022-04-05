@@ -17,6 +17,8 @@ const userAccess = (req,res,next)=>{
     // console.log(token)
     if(token){
         next()
+    }else{
+        res.send(alertmove('/','회원만 가능한 기능입니다'))
     }
     }catch(e){
         res.send(alertmove('/','회원만 가능한 기능입니다'))
@@ -28,8 +30,10 @@ const adminAccess = (req,res,next)=>{
     try{
     let token = jwtDecode(req.cookies.token)
     const userlevel = token.level
-    if(userlevel == 3){
+    if(userlevel === 3){
         next()
+    }else{
+        res.send(alertmove('/','관리자만 가능한 기능입니다'))
     }
     }catch(e){
         res.send(alertmove('/','관리자만 가능한 기능입니다'))
