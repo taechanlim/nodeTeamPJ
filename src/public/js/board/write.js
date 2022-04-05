@@ -13,7 +13,6 @@ board_Frm.addEventListener('submit', async (e)=>{
   formData.append('board_img3',board_img3.files[2])
   formData.append('board_img4',board_img4.files[3])
 
-  console.log(body)
   try {
     const response = await axios.post('http://localhost:4001/api/board/write',formData,{
       'Content-type':'application/json',
