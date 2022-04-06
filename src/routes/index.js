@@ -9,6 +9,7 @@ const userRouter = require('./user')
 const authRouter = require('./auth')
 const testRouter = require('./test')
 const {alertmove} = require('../public/util/alert.js')
+const jwtDecode = require("jwt-decode");
 
 
 const userAccess = (req,res,next)=>{
@@ -33,6 +34,7 @@ const adminAccess = (req,res,next)=>{
         res.send(alertmove('/','관리자만 가능한 기능입니다'))
     }
 }
+
 
 router.use('/',mainRouter)
 router.use('/admin',adminAccess,adminRouter)
