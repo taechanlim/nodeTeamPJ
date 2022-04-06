@@ -14,6 +14,7 @@ async function abc(e) {
     withCredentials:true,
   })
   // console.log(response.data.result)
+  
 
   let template = ''
   const Nodes =  response.data.result
@@ -26,6 +27,12 @@ async function abc(e) {
 
     const col = clone.querySelectorAll('td')
 
+    const url = new URL(window.location)
+    const urlParams = url.searchParams
+
+    console.log(parseInt(urlParams.get('idx')))
+
+
     col[0].innerHTML = v.nickname
     col[1].innerHTML = v.comment
     col[2].innerHTML = v.recommend
@@ -33,8 +40,11 @@ async function abc(e) {
     col[4].querySelector('input').value = v.comment_idx
 
     col[5].addEventListener('click', async (e)=>{
+      
+      
       console.log(col[4].querySelector('input').value)
       const body = {
+        idx:urlParams.get('idx'),
         comment_idx:col[4].querySelector('input').value
       }
       const response = await axios.post('http://localhost:4001/api/comment/delete', body, {
