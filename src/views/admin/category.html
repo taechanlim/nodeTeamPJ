@@ -1,0 +1,50 @@
+{% extends "../publicTemplate/layout.html" %}
+{% block content %}
+<div id="adminpage">
+    <h1>관리자 페이지</h1>
+    <ul>
+        <li>
+           
+            <form id="category_delete_form" method="post" action="http://localhost4001/api/category/mainPlus">
+                <input id="idx_hidden" type="hidden" name="idx" value="">
+                <input id="update_btn" type="submit" value="카테고리 추가">
+            </form>
+        </li>
+        <li>
+
+            <form id="category_update_form" method="post" action="http://localhost4001/api/category/update">
+                <input id="idx_hidden" type="hidden" name="idx" value="">
+                <input id="update_btn" type="submit" value="카테고리 수정">
+            </form>
+        </li>
+        <li>
+
+            <form id="category_delete_form" method="post" action="http://localhost4001/api/category/delete">
+                <input id="idx_hidden" type="hidden" name="idx" value="">
+                <input id="delete_btn" type="submit" value="카테고리 삭제">
+            </form>         
+        </li>
+
+  <li class="reComiv">
+     <div id="commentForm">
+         <div id="inputDiv">   
+            <input type="text" name="mainInput" id="mainInput" placeholder="카테고리명">
+            <input type="hidden" name="main" id="main" value="{main}">
+                    <input type="text" name="subcate_name" id="subInput" placeholder="서브카테고리명">
+         </div>
+        <div id="repBtnDiv">
+         <button id="replyBtn">입력</button>
+        </div>
+      </div>
+    </li>
+
+            <div id="comBtnDiv">
+                <button id="cancelBtn"> 삭제 </button>
+                <button id="commentBtn">입력</button>
+        
+    </div>
+
+   <button> <h2><a href="../admin/board">게시판 관리 페이지로</a></h2> </button>
+<button><h2><a href="../admin/user">유저 관리 페이지로</a></h2></button>
+<button><a href="../admin">관리자 메인 페이지</a></button>
+{% endblock %}

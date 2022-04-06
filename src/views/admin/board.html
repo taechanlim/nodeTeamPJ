@@ -1,34 +1,87 @@
+{% extends "../publicTemplate/layout.html" %}
+{% block content %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="/.css"> -->
+
     <title>admin</title>
-    <link href="/admin.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    {% include "../nunjucks/header.html" %}
-    <div id="admin_home_wrap" class="paddingTop_content">
+<!-- 
+    게시물리스트 보여야되고
+    숨기기 -->
+
+
+
+<div id="board_list" class="paddingTop_content">
+    <h1>관리자가 수정할수 있는 게시물들 </h1>
+    <table cellspacing="0" cellpadding="0" id="board">
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th class="subject">제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>조회수</th>
+            <th>좋아요</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <div id="paging">
+        <ul>
+
+        </ul>
+    </div>
+
+    <template id="board_row">
+        <tr>
+            <td class="board_list_td">{idx}</td>
+            <td class="td_subject"></td>
+            <td class="board_list_td">{nickname}</td>
+            <td class="board_list_td">{date}</td>
+            <td class="board_list_td">{hit}</td>
+            <td class="board_list_td">{like}</td>
+        </tr>
+    </template>
+</div>
+<script type="text/javascript" src="/js/board/list.js"></script>
+
+
+
+    <div id="admin_home_wrap">
         <div id="wrap">
-            <h3 id="pagename">관리자의 -카테고리 게시물 수정 페이지</h3>
+            <h4 id="pagename">관리자의  게시물 수정 페이지</h4>
             <div class="category_edit">
-                 <div> <input type="text" id="input"> 수정 할 카테고리 <span id="result"></span>
+
+
+                <div> <input type="text" id="input"> 수정 할 카테고리 <span id="result"></span>
                     <script>
                       input.oninput = function() {
                         result.innerHTML = input.value;
                       };
                     </script>
-                </div>    
+                </div>
             </div>
             <div class="board_edit">
                 <div class="button">
-                <button><a href="/">게시물 숨기러 가기</button>
+                <button><a href="/">게시물 숨기는 버튼</button>
                  </div>
            </div>
-        
+
     </div>
-   
-    {% include "../nunjucks/footer.html" %}
+
 </body>
-</html>
+
+<button><h2><a href="../admin/user">유저 관리 페이지로</a></h2></button>
+<button><h2><a href="../admin/category">카테고리 관리 페이지로 </h2></button>
+    <button><a href="../admin">관리자 메인 페이지</a></button>
+
+{% endblock %}
