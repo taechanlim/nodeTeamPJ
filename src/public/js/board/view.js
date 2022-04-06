@@ -1,6 +1,9 @@
 // console.log(location.pathname)
+
 // console.log('board/view 확인')
 // /board/view/9 ->
+const {alertmove} = require('../../util/alert.js')
+
 async function view(){
   // const [,,,idx] = location.pathname.split('/') // []
   const [,idx] = location.href.split('=') // []
@@ -51,8 +54,21 @@ document.querySelector('#delete_btn').addEventListener('click', async(e)=>{
 
 // 글 보기에서 좋아요 버튼
 document.querySelector('#btn_like').addEventListener('click',async(e)=>{
+  const [,idx] = location.href.split('=') // []
+  const intIdx = parseInt(idx)
+  
+  const body = {
+    idx:intIdx
+  }
 
-  // const response = await
+  const response = await axios.post(`http://localhost:4001/api/board/likes`, body,{
+    withCredentials:true,
+  })
+
+  console.log(response.data.errno)
+  if(response.data.errno === 1){
+    alertmove(`http://localhost:3000/board/view?idx=${intIdx}`,'좋아요는 1번만 누를수있습니다')
+  }
 })
 
 document.addEventListener('DOMContentLoaded', async (req,res)=>{
