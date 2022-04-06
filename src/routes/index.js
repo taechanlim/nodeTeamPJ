@@ -9,10 +9,11 @@ const userRouter = require('./user')
 const authRouter = require('./auth')
 const testRouter = require('./test')
 const {alertmove} = require('../public/util/alert.js')
-const jwtDecode = require('jwt-decode');
+
 
 const userAccess = (req,res,next)=>{
     try{
+    const jwtDecode = require('jwt-decode');
     let token = jwtDecode(req.cookies.token)
     // console.log(token)
     if(token){
