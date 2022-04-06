@@ -67,6 +67,29 @@ document.querySelector('#btn_like').addEventListener('click',async(e)=>{
   console.log(response.data.errno)
   if(response.data.errno === 1){
     alert('좋아요는 1번만 누를수있습니다')
+  }else{
+    alert('좋아요를 눌렀습니다')
+  }
+})
+
+//좋아요 취소버튼
+document.querySelector('#btn_likecancle').addEventListener('click',async(e)=>{
+  const intIdx = parseInt(location.search.split('&')[0].slice(5))
+  console.log(intIdx)
+  
+  const body = {
+    idx:intIdx
+  }
+
+  const response = await axios.post(`http://localhost:4001/api/board/likescancle`, body,{
+    withCredentials:true,
+  })
+
+  console.log(response.data.errno)
+  if(response.data.errno === 1){
+    alert('좋아요취소는 1번만 누를수있습니다')
+  }else{
+    alert('좋아요가 취소되었습니다')
   }
 })
 
