@@ -1,4 +1,4 @@
-const inputTagSearch = document.querySelector('#input_tag_search')
+const header_input_search = document.querySelector('#input_tag_search')
 const frmSearch = document.querySelector('#tag_search')
 const content = document.querySelector('#content')
 const fbWrap = document.querySelector('#free_board_wrap')
@@ -7,6 +7,7 @@ const fbWrap_height = window.getComputedStyle(document.querySelector('#free_boar
 const closeBtn = document.querySelector('.close_board')
 const header = document.querySelector('#header_wrap')
 const header_height = window.getComputedStyle(document.querySelector('#header_wrap')).height
+const header_paddingTop = window.getComputedStyle(document.querySelector('#header_wrap')).paddingTop
 const root_header_height = (px) => {
   document.documentElement.style.setProperty('--header-height',`${px}px`)
 }
@@ -18,10 +19,16 @@ const content_paddingTop = (px) => {
   // console.log(`#content 윗 padding '${px}' 만큼 조절`)
 }
 
-inputTagSearch.addEventListener('click',(e) => {
+fbWrap.addEventListener('DOMContentLoaded',(e)=>{
+  const px = floatPx(fbWrap_height)+floatPx(header_height)
+  document.documentElement.style.setProperty('--free-board-transY',`-${px}px`)
+})
+
+header_input_search.addEventListener('click',(e) => {
   fbWrap.style.opacity = '1'
   fbWrap.style.visibility = 'visible'
-  fbWrap.style.transform = `translateY( 0px )`
+  const px = floatPx(header_paddingTop)
+  document.documentElement.style.setProperty('--free-board-transY',`-${px}px`)
   content_paddingTop(floatPx(header_height)+floatPx(fbWrap_margin)+floatPx(fbWrap_height))
 })
 
@@ -31,10 +38,11 @@ frmSearch.addEventListener('submit',(e) => {
 
 // 닫기버튼 누를시 태그검색에 내용이 들어가 있어도 강제로 닫음
 closeBtn.addEventListener('click',(e) => {
-  if (inputTagSearch.style.opacity !== '0') {
+  if (header_input_search.style.opacity !== '0') {
     fbWrap.style.opacity = '0'
     fbWrap.style.visibility = 'hidden'
-    fbWrap.style.transform =`translateY( -250px )`
+    const px = floatPx(fbWrap_height)+floatPx(header_height)-floatPx(header_paddingTop)
+    document.documentElement.style.setProperty('--free-board-transY',`-${px}px`)
     content_paddingTop(floatPx(header_height)+floatPx(fbWrap_margin))
   }
 })
@@ -44,7 +52,7 @@ closeBtn.addEventListener('click',(e) => {
 
 // 태그검색에 내용이 비워져있을때 다른 곳을 클릭하면 위로 올라감
 // content.addEventListener('click',(e) => {
-//   if (inputTagSearch.value === '' && fbWrap.style.opacity !== '0') {
+//   if (header_input_search.value === '' && fbWrap.style.opacity !== '0') {
 //     fbWrap.style.opacity = '0'
 //     fbWrap.style.visibility = 'hidden'
 //     fbWrap.style.transform =`translateY( 0px )`
