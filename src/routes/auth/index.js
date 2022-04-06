@@ -55,13 +55,11 @@ router.get('/oauth',async (req,res)=>{
         // console.log(user.data.kakao_account.profile.nickname) //로그인한유저 닉네임
         // console.log(user.data.kakao_account.profile.profile_image_url) //로그인한유저 프로필사진
         const { nickname, profile_image_url } = user.data.kakao_account.profile
-        const ccc = {
+        const accountKakao = {
             nickname:nickname,
             profile_image_url:profile_image_url
         }
-        console.log(ccc)
-        const jwt = createToken(ccc)
-        console.log(jwt)
+        const jwt = createToken(accountKakao)
 
         res.cookie('access_token',ACCESS_TOKEN,{
             path:'/', 
