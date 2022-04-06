@@ -11,6 +11,7 @@
 :root {
     --main-toppadding: '';
     --free-board-height: 200px;
+    --free-board-transY: '';
     --content-padding: '';
     --header-height: '';
 }
@@ -72,7 +73,7 @@ input:-webkit-autofill:active {
     z-index: 2;
     margin: 0 auto;
     box-sizing: border-box;
-    padding: 0 10% 0 10%;
+    padding: 10px 10% 0 10%;
     /* css flex */
     display: flex;
     justify-content: space-between;
@@ -135,7 +136,7 @@ input:-webkit-autofill:active {
     position: absolute;
     z-index: 1;
     /*top: 0;*/
-    transform: translateY( -250px );
+    transform: translateY( var(--free-board-transY) );
     opacity: 0;
     visibility: visible;
 }
