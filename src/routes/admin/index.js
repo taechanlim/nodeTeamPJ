@@ -18,5 +18,11 @@ router.get('/board',(req,res)=>{
   console.log('--------------------- 관리자 게시판 관리 페이지 ---------------------')
   res.render('./admin/board')
 })
+//카테고리 관리 페이지
+router.get('/category',(req,res)=>{
+  console.log('--------------------- 관리자 카테고리 관리 페이지 ---------------------')
+  res.render('./admin/category')
+})
+
 
 module.exports = router
