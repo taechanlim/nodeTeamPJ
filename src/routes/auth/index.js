@@ -1,4 +1,5 @@
 require('dotenv').config()
+const {createToken} = require('../../public/util/jwt')
 const express=require('express')
 const axios = require('axios')
 const qs = require('qs') //객체를 query형태로 바꿔주는 라이브러리 npm install qs
@@ -50,10 +51,25 @@ router.get('/oauth',async (req,res)=>{
                 'Authorization':`Bearer ${ACCESS_TOKEN}`
             }
         })
+        // console.log('ACCESS_TOKEN\n',ACCESS_TOKEN)
         // console.log(user.data.kakao_account.profile.nickname) //로그인한유저 닉네임
         // console.log(user.data.kakao_account.profile.profile_image_url) //로그인한유저 프로필사진
-        res.cookie('token',ACCESS_TOKEN,{
+        const { nickname, profile_image_url } = user.data.kakao_account.profile
+        const ccc = {
+            nickname:nickname,
+            profile_image_url:profile_image_url
+        }
+        console.log(ccc)
+        const jwt = createToken(ccc)
+        console.log(jwt)
+
+        res.cookie('access_token',ACCESS_TOKEN,{
             path:'/', 
+            secure:true,
+            domain:'localhost'
+        })
+        res.cookie('token',jwt,{
+            path:'/',
             secure:true,
             domain:'localhost'
         })
@@ -91,9 +107,10 @@ router.get('/logout',(req,res)=>{
     // })
 
 router.get('/logout/auth',async (req,res)=>{
-    const ACCESS_TOKEN = req.headers.cookie.split('=')[1]
+    const ACCESS_TOKEN = req.cookies.access_token
+
     const url = "https://kapi.kakao.com/v1/user/logout"
-    
+
     const response = await axios.post(url,null,{
         headers:{
             "Content-type":"application/x-www-form-urlencoded",
@@ -101,7 +118,8 @@ router.get('/logout/auth',async (req,res)=>{
         }
     })
     console.log(response.data)
-    
+
+    res.clearCookie('access_token')
     res.clearCookie('token')
     res.redirect('/')
 })

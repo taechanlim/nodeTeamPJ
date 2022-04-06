@@ -1,9 +1,9 @@
-const jwtDecode = require('jwt-decode');
-exports.main = (req, res) => {
+exports.main = (req, res, next) => {
   console.log('--------------------- 메인 페이지 ---------------------')
   if (req.cookies.token) {
+    const jwtDecode = require('jwt-decode');
     let token = jwtDecode(req.cookies.token)
-    const {userid, nickname} = token
+    const { nickname } = token
     console.log(token)
 
     res.render('./main/index', {
@@ -12,6 +12,4 @@ exports.main = (req, res) => {
   } else {
     res.render('./main/index')
   }
-
-
 }

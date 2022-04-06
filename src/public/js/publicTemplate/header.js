@@ -51,32 +51,31 @@ if (login_Frm) {
   const logoutBtn = document.querySelector('#logout')
   logoutBtn.addEventListener('click', async (e) => {
 
-    const body = {
-      cookies: document.cookie
+    // let [cookies] = document.cookie
+    if (document.cookie.split(';').some((i)=>i.trim().startsWith('access_token='))) {
+      console.log('되ㅑ네?')
+      location.href = 'http://localhost:3000/kakao/logout'
+
+    } else {
+      const response = await axios.post('http://localhost:3000/user/api/logout',{
+        'Content-type': 'application/json',
+        withCredentials: true,
+      })
+
+      const nickname = response.data.nickname
+      alert(`
+      그래! 가버려!!\n ${nickname} 이자식 또만나자!! 
+      `)
+
+      location.href = 'http://localhost:3000'
     }
-
-    const response = await axios.post('http://localhost:3000/user/api/logout', body, {
-      'Content-type': 'application/json',
-      withCredentials: true,
-    })
-
-    console.log(response.data.nickname)
-    const nickname = response.data.nickname
-    alert(`
-    그래! 가버려!!\n ${nickname} 이자식 또만나자!! 
-  `)
-
-    let [cookies] = document.cookie.split('=')
-
-    delCookie(cookies)
-    location.href = 'http://localhost:3000'
   })
+}
 
 // 이름에 해당하는 쿠키 삭제
-  function delCookie(name) {
-    let date = new Date();
-    date.setDate(date.getDate() - 100);
-    let Cookie = `${name}=;Expires=${date.toUTCString()}`
-    document.cookie = Cookie;
-  }
-}
+//   function delCookie(name) {
+//     let date = new Date();
+//     date.setDate(date.getDate() - 100);
+//     let Cookie = `${name}=;Expires=${date.toUTCString()}`
+//     document.cookie = Cookie;
+//   }
