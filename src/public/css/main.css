@@ -20,15 +20,12 @@ ul,li{list-style: none;}
 a:link { text-decoration: none; color:black; text-shadow: 0 0 24px; }
 a:visited { text-decoration: none; color:black; text-shadow: 0 0 24px; }
 a:active { text-decoration: none; color:gray; }
-/*#logo_header > a > span{*/
-/*    font-family: 'Oxaninum';*/
-/*}*/
 
 #content, #free_board_wrap {
     transition: all ease 1s 0s;
 }
 
-#content {
+.paddingTop_content {
     padding-top: var(--main-toppadding);
 }
 
@@ -71,7 +68,6 @@ a:active { text-decoration: none; color:gray; }
 
 #tag_search > svg {
     position: absolute;
-    top: 50%;
     width: 16px;
     height: 16px;
 }
@@ -171,16 +167,3 @@ a:active { text-decoration: none; color:gray; }
     margin: 0 auto;
     text-align: center;
 }
-
-/*.join_btn {*/
-/*    display: block;*/
-/*    height: 30px;*/
-/*    font-size: 22px;*/
-/*    letter-spacing: 2px;*/
-/*    text-align: center;*/
-/*    padding: 13px 0 11px 0;*/
-/*    width: 100%;*/
-/*    background: #03c75a;*/
-/*    color: white;*/
-/*    margin: 20px 0 20px 0;*/
-/*}*/

@@ -27,17 +27,23 @@ router.get('/mypage',(req,res)=>{
 
 // 로그아웃 클릭시 실행
 router.post('/api/logout',(req,res)=>{
-  const [,jwt] = req.body.cookies.split('=')
-  console.log(jwt)
-  const [,payload,] = jwt.split('.')
+  const token = req.cookies.token
+  console.log(token)
+  const [,payload,] = token.split('.')
   const decodingPayload = Buffer.from(payload,'base64').toString()
   const nickname = JSON.parse(decodingPayload).nickname
   console.log(nickname)
 
+  if (req.cookies.access_token) {
+    res.clearCookie('access_token')
+    res.clearCookie('token')
+  } else {
+    res.clearCookie('token')
+  }
+
   let response = {
     nickname:nickname
   }
-
   response = {...response}
 
   res.json(response)
