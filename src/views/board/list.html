@@ -1,7 +1,9 @@
 {% extends "../publicTemplate/layout.html" %}
 {% block content %}
+<link rel="stylesheet" href="/css/board/board_list.css">
 <div id="board_list" class="paddingTop_content">
     <h1>여긴 게시판 리스트야</h1>
+    <a id="write" href="/board/write">글쓰러가기</a>
     <table cellspacing="0" cellpadding="0" id="board">
         <thead>
         <tr>
@@ -22,7 +24,6 @@
 
         </ul>
     </div>
-    <a href="/board/write">글쓰기</a>
     <template id="board_row">
         <tr>
             <td class="board_list_td">{idx}</td>

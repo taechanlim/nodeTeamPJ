@@ -1,0 +1,70 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+#board_list{
+    width:100%;
+}
+#board_list>h1{
+    padding:30px;
+    color:aqua;
+}
+#board_list > table{
+    width:1200px;
+    height:500px;
+    margin:0 auto;
+    border-radius: 15px;
+    padding-bottom: 30px;
+}
+#board_list > table >thead{
+    width:1200px; 
+    background: blue;
+}
+#board_list > table >thead > tr >th{
+    font-size:20px;
+    color:white;
+    border:1px solid gray;
+    border-radius: 20px;
+}
+
+#paging > ul{
+    width:1200px;
+    margin:0 auto;
+    text-align: center;
+}
+#paging > ul >li{
+    height: 50px;
+    display:inline-block;
+    margin:0 auto;
+}
+#paging > ul >li >a{
+    font-size:30px;
+    padding:20px;
+    cursor: pointer;
+}
+#write{
+    position:absolute;
+    top:50px;
+    right:180px;
+    background:red;
+    font-size:35px;
+    color:white;
+    border-radius:20px;
+    padding:10px;
+    
+}
+#write:hover{
+    background:blue;
+    opacity: 0.5;
+}
+
+#board > tbody > tr > td{
+    text-align: center;
+    padding-top:20px;
+    padding-bottom: 20px;
+    font-size:17px;
+    border-bottom: 1px solid black;
+}
+#board > tbody > tr > td > a{
+    color:red;
+}
