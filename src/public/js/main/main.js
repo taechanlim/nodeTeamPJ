@@ -7,6 +7,9 @@ const fbWrap_height = window.getComputedStyle(document.querySelector('#free_boar
 const closeBtn = document.querySelector('.close_board')
 const header = document.querySelector('#header_wrap')
 const header_height = window.getComputedStyle(document.querySelector('#header_wrap')).height
+const root_header_height = (px) => {
+  document.documentElement.style.setProperty('--header-height',`${px}px`)
+}
 
 // #content의 paddingTop 조절
 const content_paddingTop = (px) => {
@@ -67,6 +70,7 @@ function floatPx(px) {
 // main.js 참조시 기본실행
 const init = () => {
   content_paddingTop(floatPx(header_height))
+  root_header_height(floatPx(header_height))
 }
 init()
 

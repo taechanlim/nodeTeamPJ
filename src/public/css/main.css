@@ -12,14 +12,46 @@
     --main-toppadding: '';
     --free-board-height: 200px;
     --content-padding: '';
+    --header-height: '';
 }
 /* public */
 *{margin: 0; padding: 0;}
 body { background: #f5f6f7; }
 ul,li{list-style: none;}
-a:link { text-decoration: none; color:black; text-shadow: 0 0 24px; }
-a:visited { text-decoration: none; color:black; text-shadow: 0 0 24px; }
+a:link { text-decoration: none; color:black; /*text-shadow: 0 0 24px;*/ }
+a:visited { text-decoration: none; color:black; /*text-shadow: 0 0 24px;*/ }
 a:active { text-decoration: none; color:gray; }
+
+input {
+    outline: none;
+}
+.input_search {
+    border: none;
+    border-bottom: dashed;
+    border-color: #eae9e9;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-transition: background-color 9999s ease-out;
+    -webkit-box-shadow: 0 0 0px 1000px #aaa598 inset !important;
+    -webkit-text-fill-color: #fff !important;
+}
+
+.font_eae9e9 {
+    color: #eae9e9;
+}
+
+.header_backColor {
+    background: #aaa598;
+}
+
+.button_color {
+    background-color: #54a03f;
+}
 
 #content, #free_board_wrap {
     transition: all ease 1s 0s;
@@ -32,12 +64,15 @@ a:active { text-decoration: none; color:gray; }
 /* header.html */
 #header_wrap {
     position: fixed;
-    max-width: 1200px;
+    /*max-width: 1200px;*/
+    height: 60px;
     top: 0;
     left: 0;
     right: 0;
     z-index: 2;
     margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0 10% 0 10%;
     /* css flex */
     display: flex;
     justify-content: space-between;
@@ -46,6 +81,16 @@ a:active { text-decoration: none; color:gray; }
 #left_header {
     /* css flex */
     display: flex;
+}
+
+#logo_header {
+    /* css flex */
+    display: flex;
+    align-items: center;
+}
+
+#logo_header > a {
+    align-items: center;
 }
 
 #right_header {
@@ -81,9 +126,11 @@ a:active { text-decoration: none; color:gray; }
 
 /* header_board.html */
 #free_board_wrap {
-    background: lightyellow;
     height: var(--free-board-height);
     width: 100%;
+    left: 0;
+    padding: 0 10% 0 10%;
+    margin-top: var(--header-height);
     max-width: 1200px;
     position: absolute;
     z-index: 1;
