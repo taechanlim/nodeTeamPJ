@@ -1,5 +1,5 @@
 const express = require('express')
-const {renderWithToken} = require("../headerLoginOut");
+const {renderWithToken} = require("../../public/util/headerLoginOut");
 const router = express.Router()
 
 // 회원가입
