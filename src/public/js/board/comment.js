@@ -54,6 +54,24 @@ async function abc(e) {
       // console.log(response.data.result)
     })
 
+    col[6].addEventListener('click', async (e)=>{
+      
+      console.log(col[4].querySelector('input').value)
+      const body = {
+        comment_idx:col[4].querySelector('input').value
+      }
+      const response = await axios.post('http://localhost:4001/api/comment/recommend', body, {
+        withCredentials:true,
+      })
+      console.log(response.data.errno)
+      if(response.data.errno === 1){
+        alert('추천은 1번만 누를수있습니다')
+        await abc()
+      }else{
+        alert('추천을 눌렀습니다')
+        await abc()
+      }
+    })
     tbody.appendChild(clone)
   })
 }
