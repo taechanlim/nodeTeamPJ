@@ -21,12 +21,24 @@
 }
 #sector > span{
     margin:30px 30px 0 30px;
+    color:black;
+}
+#sector > span > a{
     color:white;
+    font-size:30px;
+    border:1px solid white;
+    border-radius: 10px;
+}
+#sector > span > a:hover{
+    background:red;
 }
 #sector > span > #subject{
     font-size:40px;
+    color:white;
 }
-
+#sector > span > #nickname{
+    color:white;
+}
 #sector2{
     width:1000px;
     height:400px;
