@@ -2,11 +2,11 @@ const board_Frm = document.querySelector('#board_write_Frm')
 board_Frm.addEventListener('submit', async (e)=>{
   e.preventDefault()
   // 이쪽코드가 실행된다!
-  const { cate_name, subject, content} = e.target
+  const { category, subject, content} = e.target
 
-
+  console.log(e.target.category.value)
   const body = {
-    cate_name:cate_name.value,
+    main_category:category.value,
     subject:subject.value,
     content:content.value
   }
