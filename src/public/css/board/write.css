@@ -11,7 +11,16 @@
     border-radius: 20px;
     padding-bottom:100px;
 }
-
+#board_write_Frm > a{
+    color:white;
+    font-size:30px;
+    margin:50px;
+    border:1px solid white;
+    border-radius: 10px;
+}
+#board_write_Frm > a:hover{
+    background:red;
+}
 #board_cate_name{
     display:block;
     width:300px;
