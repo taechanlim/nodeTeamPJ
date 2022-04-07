@@ -1,0 +1,52 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+#board_view{
+    width:1200px;
+    margin: 0 auto;
+    margin-top: 100px;
+    background:blue;
+    border-radius: 20px;
+    padding-bottom:100px;
+}
+#board_view > h1{
+    margin:30px;
+    color:black;
+}
+#board_update_form > span{
+    display:block;
+    margin:30px;
+    font-size:30px;
+    color:white;
+}
+#update_subject{
+    width:600px;
+    height: 50px;
+    border-radius: 15px;
+    border:none;
+    font-size:20px;
+    margin-left:20px;
+}
+#update_content{
+    width:800px;
+    height: 80px;
+    border-radius: 15px;
+    border:none;
+    font-size:20px;
+    margin-left:20px;
+}
+#update_btn{
+    margin:30px;
+    margin-top:100px;
+    margin-left:600px;
+    width:300px;
+    height: 100px;
+    border-radius: 15px;
+    font-size:30px;
+    margin-left:450px;
+    border:none;
+}
+#update_btn:hover{
+    background:gray;
+}
