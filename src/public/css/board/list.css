@@ -44,9 +44,9 @@
 }
 #write{
     position:absolute;
-    top:50px;
+    top:70px;
     right:180px;
-    background:red;
+    background:skyblue;
     font-size:35px;
     color:white;
     border-radius:20px;
