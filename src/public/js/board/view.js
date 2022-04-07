@@ -9,7 +9,7 @@ async function view(){
   const intIdx = parseInt(idx)
   // console.log(intIdx)
   const [,nickname] = location.href.split('?')
-  console.log(nickname)
+  // console.log(nickname)
   const subjectBox = document.querySelector('#subject')
   const nicknameBox = document.querySelector('#nickname')
   const contentBox = document.querySelector('#content')
@@ -25,7 +25,7 @@ async function view(){
     subjectBox.innerHTML = subject
     nicknameBox.innerHTML = nickname
     contentBox.innerHTML = content
-    updateBtn.href = `/board/update?idx=${idx}`
+    updateBtn.href = `/board/update?idx=${idx}&nickname=${nickname}`
   } else {
 
   }
