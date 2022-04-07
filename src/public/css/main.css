@@ -70,7 +70,7 @@ input:-webkit-autofill:active {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 2;
+    /*z-index: 2;*/
     margin: 0 auto;
     box-sizing: border-box;
     padding: 10px 10% 0 10%;
@@ -134,7 +134,7 @@ input:-webkit-autofill:active {
     margin-top: var(--header-height);
     max-width: 1200px;
     position: absolute;
-    z-index: 1;
+    /*z-index: 1;*/
     /*top: 0;*/
     transform: translateY( var(--free-board-transY) );
     opacity: 0;
