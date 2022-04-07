@@ -19,7 +19,7 @@ const content_paddingTop = (px) => {
   // console.log(`#content 윗 padding '${px}' 만큼 조절`)
 }
 
-fbWrap.addEventListener('DOMContentLoaded',(e)=>{
+document.addEventListener('DOMContentLoaded',(e)=>{
   const px = floatPx(fbWrap_height)+floatPx(header_height)
   document.documentElement.style.setProperty('--free-board-transY',`-${px}px`)
 })
