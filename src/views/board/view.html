@@ -1,17 +1,28 @@
 {% extends "../publicTemplate/layout.html" %}
 {% block content %}
+<link rel="stylesheet" href="/css/board/view.css">
 <div id="board_view_wrap" class="paddingTop_content">
     <div id="board_view">
-        제목 : <span id="subject"></span><br/>
-        닉네임 : <span id="nickname"></span> <br/>
-        내용 : <span id="content"></span><br/>
-        <h2><a id="update_link" href="">글 수정하기</a></h2>
-        <button id="btn_like"><span>좋아요 버튼</span></button>
-        <button id="btn_likecancle"><span>좋아요취소 버튼</span></button>
+        <div id="sector">
+        <span>게시글</span>
+        <span>제목 : <span id="subject"></span></span>
+        <span>닉네임 : <span id="nickname"></span> </span>
+        </div>
+        <div id="sector2">
+        <span>내용 : <span id="content"></span></span>
+        </div>
+        <div id="like_sector">
+        <button id="btn_like"><span>좋아요</span></button>
+        <button id="btn_likecancle"><span>좋아요취소</span></button>
+        </div>
+        <div id="update_delete">
+        <h2><a id="update_link" href="">수정하기</a></h2>
         <form id="board_delete_form" method="post" action="http://localhost4001/api/board/delete">
             <input id="idx_hidden" type="hidden" name="idx" value="">
-            <input id="delete_btn" type="submit" value="글 삭제하기">
+            <input id="delete_btn" type="submit" value="삭제하기">
         </form>
+        </div>
+        <div id="comment_box">
         <form id="write_comment_board_form" method="post" action="http://localhost:4001/api/comment/write">
             <input id="input_comment" type="text" name="content" placeholder="댓글창입니다.">
             <input type="submit" value="작성">
@@ -21,6 +32,7 @@
 
             </tbody>
         </table>
+        </div>
     </div>
 </div>
 
@@ -31,8 +43,8 @@
         <td></td>
         <td></td>
         <td><input type="hidden" class="comment_idx" value="test"></td>
-        <td><span class="comment_delete_btn">X</span></td>
-        <td><button id="btn_comment_recommend" type="button"><span>댓글 좋아요</span></button></td>
+        <td><span class="comment_delete_btn">삭제</span></td>
+        <td><button id="btn_comment_recommend" type="button"><span>댓글 추천</span></button></td>
     </tr>
 </template>
 

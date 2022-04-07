@@ -1,0 +1,155 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+#board_view_wrap{
+    width: 1200px;
+    height:600px;
+    margin:0 auto;
+}
+#board_view{
+    border-radius: 15px;
+    padding-bottom: 300px;
+    background:blue;
+    text-align: center;
+    font-size:30px;
+}
+#sector{
+    display: flex;
+    justify-content: space-between;
+    margin-top:100px;
+}
+#sector > span{
+    margin:30px 30px 0 30px;
+    color:white;
+}
+#sector > span > #subject{
+    font-size:40px;
+}
+
+#sector2{
+    width:1000px;
+    height:400px;
+    background:white;
+    margin:0 auto;
+    margin-top:80px;
+}
+#sector2 >span{
+    float:left;
+    font-size:40px;
+    color:gray;
+}
+#sector2 >span> #content{
+    width:400px;
+    font-size:50px;
+    color:black;
+}
+#like_sector{
+    margin:50px 0 50px 0;
+    height:100px;
+    background:skyblue;
+}
+#like_sector > button{
+    margin-top:25px;
+    width: 150px;
+    height:50px;
+    background: red;
+    border-radius: 15px;
+    border:none;
+    cursor: pointer;
+    opacity: 0.6;
+}
+#like_sector > button:hover{
+    opacity: 1;
+}
+
+#like_sector > button > span{
+    font-size:20px;
+    color:white;
+}
+
+#update_delete{
+    display: flex;
+    justify-content: center;
+}
+
+#update_delete>h2{
+    font-size:20px;
+    padding:0 60px 0 60px;
+    border-radius: 10px;
+    background: white;
+    line-height: 40px;
+    margin-right:10px;
+}
+#update_delete>h2:hover{
+    background:gray;
+}
+#board_delete_form{
+    width: 200px;
+    border-radius: 10px;
+    background: white;
+    margin-left:10px;
+}
+#board_delete_form:hover{
+    background: gray;
+}
+#board_delete_form>input{
+    background: white;
+    width:190px;
+    height:35px;
+    cursor: pointer;
+    border:none;
+    line-height: 15px;
+    font-size:20px;
+    font-weight: bold;
+}
+#board_delete_form>input:hover{
+    background: gray;
+}
+#comment_box{
+    background:white;
+    width:100%;
+    margin:0 auto;
+    margin-top:100px;
+    border-radius:20px;
+    text-align: left;
+}
+#write_comment_board_form > input{
+    width:100px;
+    height:80px;
+    font-size:20px;
+}
+#write_comment_board_form > #input_comment{
+    width:500px;
+    height: 80px;
+    margin-top:20px;
+    margin-left:50px;
+}
+#comment_box > table{
+    margin:30px 0 0 30px;
+}
+#comment_box > table > tbody > tr{
+    font-size:20px;
+}
+#comment_box > table > tbody > tr > td{
+    padding:30px;
+}
+#comment_box > table > tbody > tr .comment_delete_btn{
+    cursor: pointer;
+    color:gray;
+}
+#comment_box > table > tbody > tr .comment_delete_btn:hover{
+    color:red;
+}
+#comment_box > table > tbody > tr >td> #btn_comment_recommend{
+    width:100px;
+    background:blue;
+    border-radius: 15px;
+    border:none;
+    cursor: pointer;
+    color:white;
+}
+#comment_box > table > tbody > tr >td> #btn_comment_recommend:hover{
+    background: red;
+}
+
