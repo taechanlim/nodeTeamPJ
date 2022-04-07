@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded',async ()=>{
     const aElement = document.createElement('a')
     
     aElement.href = '/board/view?idx='+v.idx+'&'+'nickname='+v.nickname
+    console.log(v.nickname)
     aElement.innerHTML = v.subject
 
     td[0].innerHTML = v.idx

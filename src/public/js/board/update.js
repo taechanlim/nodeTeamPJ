@@ -1,16 +1,17 @@
-console.log('board/update 확인')
-console.log(location.pathname)
+// console.log('board/update 확인')
+// console.log(location.pathname)
 // /board/view/9 ->
 async function view(){
   // const [,,,idx] = location.pathname.split('/') // []
   const [,idx] = location.href.split('=') // []
   const intIdx = parseInt(idx)
-  console.log(intIdx)
+  const [,nickname] = location.href.split('?')
+  
   let inputSubject = document.querySelector('#update_subject')
   const nicknameBox = document.querySelector('#nickname')
   let inputContent = document.querySelector('#update_content')
 
-  const response = await axios.post(`http://localhost:4001/api/board/view?idx=${intIdx}`,{
+  const response = await axios.post(`http://localhost:4001/api/board/view?idx=${intIdx}&nickname=${nickname}`,{
     withCredentials:true,
   })
 
