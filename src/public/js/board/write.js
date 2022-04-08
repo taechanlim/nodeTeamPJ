@@ -36,3 +36,19 @@ board_Frm.addEventListener('submit', async (e)=>{
   // "errno": 0
   // }
 })
+const cate_select = document.querySelector('#board_cate_name')
+console.log(cate_select)
+cate_select.addEventListener('click',async ()=>{
+  const response = await axios.post('http://localhost:4001/api/board/category',{
+      'Content-type':'application/json',
+      withCredentials:true,
+    })
+    // console.log(response.data.result)
+    const optgroup = cate_select.querySelector('optgroup')
+    const opt = cate_select.querySelectorAll('optgroup>option')
+    const optlist = response.data.result
+    
+    for(let i=0; i<optlist.length;i++){
+      opt[i].innerHTML = optlist[i].cate_name
+    }
+})

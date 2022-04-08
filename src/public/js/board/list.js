@@ -1,10 +1,38 @@
 console.log('보드리스트 확인')
+const showValue = (target) => {
+  const t = target.value
+  location = `http://localhost:3000/board/list?${t}`
+}
+
 
 let list = {}
-document.addEventListener('DOMContentLoaded',async ()=>{
+document.addEventListener('DOMContentLoaded',async (e)=>{
   // 요청에대한 코드를 작성해서 결과물을 받아와야합니다.
-  const response = await axios.post('http://localhost:4001/api/board/list',{
+  const cate_name = document.querySelector('#board_cate_name')
+  const category = location.href.split('?')[1]
+  const body = {
+    cate_name:decodeURIComponent(category)
+  }
+  const response = await axios.post('http://localhost:4001/api/board/list',body,{
     withCredentials:true,
+  })
+  // console.log(response.data.result2)
+
+  const cate_select = document.querySelector('#board_cate_name')
+  console.log(cate_select)
+  cate_select.addEventListener('click',async ()=>{
+  const response = await axios.post('http://localhost:4001/api/board/category',{
+      'Content-type':'application/json',
+      withCredentials:true,
+    })
+    // console.log(response.data.result)
+    const optgroup = cate_select.querySelector('optgroup')
+    const opt = cate_select.querySelectorAll('optgroup>option')
+    const optlist = response.data.result
+    
+    for(let i=0; i<optlist.length;i++){
+      opt[i+1].innerHTML = optlist[i].cate_name
+    }
   })
 
   // code
@@ -67,14 +95,14 @@ document.addEventListener('DOMContentLoaded',async ()=>{
   // splice(0,10)
   const board_row = document.querySelector('#board_list > #board_row')
   const tbody = document.querySelector('#board tbody')
-  console.log(board_row.content)
+  // console.log(board_row.content)
   Nodes.forEach(v => {
     const clone = document.importNode(board_row.content,true)
     const td = clone.querySelectorAll('td')
     const aElement = document.createElement('a')
     
     aElement.href = '/board/view?idx='+v.idx+'&'+'nickname='+v.nickname
-    console.log(v.nickname)
+    // console.log(v.nickname)
     aElement.innerHTML = v.subject
 
     td[0].innerHTML = v.idx

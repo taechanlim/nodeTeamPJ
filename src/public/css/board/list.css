@@ -68,3 +68,18 @@
 #board > tbody > tr > td > a{
     color:red;
 }
+h3{
+    margin-left:100px;
+    color:red;
+}
+#board_cate_name{
+    width:150px;
+    height:30px;
+    margin:30px;
+    margin-left:110px;
+    border-radius: 15px;
+}
+#board_cate_name > optgroup > option{
+    font-size:20px;
+    color:blue;
+}
