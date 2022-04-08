@@ -1,4 +1,49 @@
 {% extends "../publicTemplate/layout.html" %}
 {% block content %}
-<h1>마이페이지야 내글들을 확인할수있지</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지 </title>
+</head>
+</head>
+<body>
+    <div id="wrap">
+        <h3 id="pagename_profile"> 내 정보</h3>
+        <div id="profile_wrap">
+            <div id="profile_left">
+                <div class="profile_info_view">
+
+                    <br><br><br>
+                    <p><span>" {{nickname}} " </span>님 반갑습니다.</p>
+                    <p><span>이름: "{{username}}"</span></p>
+                    <p>성별: {{gender}}</p>
+                    <p>핸드폰번호: {{phonenumber}}</p>       
+                    <p>주소 :{{address}}</p>
+                    <p>레벨 :{{level}} </p>
+                    <p>포인트 :{{point}} </p> 
+                </div>
+
+    <div id="wrap">
+        <h3 id="b_name">"내 작성글"</h3>
+        <table>
+            <thead id="board_head">
+                <tr>
+                    <td class="board_idx">번호</td>
+                    <td class="board_subject">제목</td>
+                    <td class="board_date">작성일</td>
+                    <td class="board_likes">조회수</td>
+                    <td class="board_hit">좋아요</td>
+                </tr>
+            </thead>
+           
+        
+        <div id="box">
+            <button class="main"><a href="/">메인으로</a></button>
+        </div>
+    </div>
+</body>
+</html>
 {% endblock %}

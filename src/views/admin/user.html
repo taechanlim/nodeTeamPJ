@@ -3,12 +3,31 @@
     <div id="wrap">
         <h3 id="list_pagename">관리자의 회원 정보 수정 페이지</h3>
         <div class="member_info">
-            <p>아이디: <span>{{rows.userid}}</span></p>
-           
-            <p>이름: <span>{{rows.username}}</span></p>
-            <p>닉네임: <span>{{rows.nickname}}</span></p>
+            <form id="admin_user_update_form" method="post" action ="">
+<!-- 
+                <div id="wrap">
+                    <h3 id="pagename_profile"> 내 정보</h3>
+                    <div id="profile_wrap">
+                        <div id="profile_left">
+                            <div class="profile_info_view">
+                                <p><span>" {{nickname}} " </span>님 </p>
+                                <p>이름: {{username}}</p>
+                                <p>핸드폰번호: {{phonenumber}}</p>       
+                                <p>주소 :{{address}}</p>
+                                <p>레벨 :{{level}} </p>
+                                <p>포인트 :{{point}} </p> 
+                            </div>
+             -->
+
+
+                닉네임 : <span id ="nickname" name ="" value =""></span>
+                레벨 :   <input id ="level" name ="" value ="">
+                활동중지 : <input id ="access" name ="" value ="">
+
+
+            <p>닉네임: <span>{{nickname}}</span></p>
             
-            {% if rows.level != 1 %}
+            {% if level != 3 %}
             <form method="post" action="/admin/info">
                 <p>등급변경 : 
                     <select name="level">
@@ -17,16 +36,23 @@
                     </select>
                 </p>
                
-                <p>이용가능여부변경 : 
+                <p>이용 가능 여부 변경 : 
                     <select name="active">
                         <option>true</option>
                         <option>false</option>
                     </select>
                 </p>
-                <input type="hidden" name="userid" value="{{rows.userid}}">
+                <input type="hidden" name="nickname" value="{{nickname}}">
                 <button type="submit">변경하기</button>
+      
+<!--       
+                <button type="submit">탈퇴하기버튼</button>
+       -->
+      
             </form>
-            {% endif %}       
+        </form>
+
+               
         </div>
         <div class="level_button">
             <button><a href="../admin/board">관리자의 게시물 수정 페이지</a></button>
