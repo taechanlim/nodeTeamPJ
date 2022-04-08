@@ -7,6 +7,24 @@ const showValue = (target) => {
 
 let list = {}
 document.addEventListener('DOMContentLoaded',async (e)=>{
+
+  const rank1 = document.querySelector('#ranking1')
+  const rank2 = document.querySelector('#ranking2')
+  const rank3 = document.querySelector('#ranking3')
+  const rank4 = document.querySelector('#ranking4')
+  const rank5 = document.querySelector('#ranking5')
+
+
+  const response_rank = await axios.post('http://localhost:4001/api/board/list_ranking',{
+    withCredentials:true,
+  })
+  const userrank = response_rank.data.result
+  console.log('나다',userrank[1].point)
+  rank1.innerHTML = '1위 :'+ userrank[0].nickname + ' ,포인트 :'+ userrank[0].point
+  rank2.innerHTML = '2위 :'+ userrank[1].nickname + ' ,포인트 :'+ userrank[1].point
+  rank3.innerHTML = '3위 :'+ userrank[2].nickname + ' ,포인트 :'+userrank[2].point
+  rank4.innerHTML = '4위 :'+ userrank[3].nickname + ' ,포인트 :'+userrank[3].point
+  rank5.innerHTML = '5위 :'+ userrank[4].nickname + ' ,포인트 :'+userrank[4].point
   // 요청에대한 코드를 작성해서 결과물을 받아와야합니다.
   const cate_name = document.querySelector('#board_cate_name')
   const category = location.href.split('?')[1]
@@ -100,7 +118,7 @@ document.addEventListener('DOMContentLoaded',async (e)=>{
     const clone = document.importNode(board_row.content,true)
     const td = clone.querySelectorAll('td')
     const aElement = document.createElement('a')
-    
+
     aElement.href = '/board/view?idx='+v.idx+'&'+'nickname='+v.nickname
     // console.log(v.nickname)
     aElement.innerHTML = v.subject

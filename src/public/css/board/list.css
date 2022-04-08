@@ -9,6 +9,30 @@
     padding:30px;
     color:aqua;
 }
+#rank{
+    position: absolute;
+    right:700px;
+    top:100px;
+    border: 1px solid red;
+}
+#rank > h2{
+    display: inline-block;
+    color:blue;
+}
+#rank > span{
+    display : block;
+    font-size: 20px;
+}
+#ranking1{
+    color:gold;
+}
+#ranking2{
+    color:silver;
+}
+#ranking3{
+    color:brown;
+}
+
 #board_list > table{
     width:1200px;
     height:500px;
