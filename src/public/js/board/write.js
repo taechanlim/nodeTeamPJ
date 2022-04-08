@@ -49,6 +49,7 @@ cate_select.addEventListener('click',async ()=>{
     const optlist = response.data.result
     
     for(let i=0; i<optlist.length;i++){
+      
       opt[i].innerHTML = optlist[i].cate_name
     }
 })
