@@ -13,6 +13,7 @@ async function view(){
   const subjectBox = document.querySelector('#subject')
   const nicknameBox = document.querySelector('#nickname')
   const contentBox = document.querySelector('#content')
+  const like_count = document.querySelector('#heartshape')
   const updateBtn = document.querySelector('#update_link')
 
   const response = await axios.post(`http://localhost:4001/api/board/view?idx=${intIdx}&nickname=${nickname}`,{
@@ -20,11 +21,12 @@ async function view(){
   })
 
   if ( response.data.errno === 0) {
-    const [{subject,nickname,content,idx}] = response.data.result
-    // console.log(response.data)
+    const [{subject,nickname,content,idx,likes}] = response.data.result
+    console.log(response.data)
     subjectBox.innerHTML = subject
     nicknameBox.innerHTML = nickname
     contentBox.innerHTML = content
+    like_count.innerHTML = likes
     updateBtn.href = `/board/update?idx=${idx}&nickname=${nickname}`
   } else {
 
@@ -70,6 +72,7 @@ document.querySelector('#btn_like').addEventListener('click',async(e)=>{
   }else{
     alert('좋아요를 눌렀습니다')
   }
+  view()
 })
 
 //좋아요 취소버튼
@@ -91,6 +94,7 @@ document.querySelector('#btn_likecancle').addEventListener('click',async(e)=>{
   }else{
     alert('좋아요가 취소되었습니다')
   }
+  view()
 })
 
 document.addEventListener('DOMContentLoaded', async (req,res)=>{
