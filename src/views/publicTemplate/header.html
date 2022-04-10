@@ -18,26 +18,28 @@
         {% if nickname === undefined %}
         <li>
             <form id="login_Frm_main" method="post" action="http://localhost:4001/user/login">
-                <input id="login_userid" class="font_eae9e9" type="text" name="userid" autocomplete="off" placeholder="아이디">
-                <input id="login_userpw" class="font_eae9e9" type="password" name="userpw" autocomplete="off" placeholder="비밀번호">
+                <div>
+                    <input id="login_userid" class="font_eae9e9 input_search header_backColor" type="text" name="userid" autocomplete="off" placeholder="아이디">
+                    <input id="login_userpw" class="font_eae9e9 input_search header_backColor" type="password" name="userpw" autocomplete="off" placeholder="비밀번호">
+                </div>
                 <input type="submit" value="로그인">
             </form>
         </li>
         <li>
-            <a href="/user/join"><span class="font_eae9e9">회원가입</span></a>
+            <a href="/kakao/login"><span class="font_eae9e9">카카오 로그인</span></a>
         </li>
         <li>
-            <a href="/kakao/login"><span class="font_eae9e9">카카오 로그인</span></a>
+            <a href="/user/join"><span class="font_eae9e9">회원가입</span></a>
         </li>
         {% else %}
         <li>
-            <span class="font_eae9e9">{{ nickname }} 님 어서오세요!</span>
+            <span class="font_eae9e9">{{ nickname }} 님 어서오세요! 👀</span>
         </li>
         <li>
             <a href="/board/list"><span class="font_eae9e9">게시판</span></a>
         </li>
         <li>
-            <a href="/user/mypage"><span class="font_eae9e9">  my page </span></a>
+            <a href="/user/mypage"><span class="font_eae9e9">  My Page </span></a>
         </li>
 
         <li>

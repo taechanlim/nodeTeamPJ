@@ -13,9 +13,9 @@ const root_header_height = (px) => {
 }
 
 // #content의 paddingTop 조절
-const content_paddingTop = (px) => {
+const content_marginTop = (px) => {
   console.log(px)
-  document.documentElement.style.setProperty('--main-toppadding',`${px+20}px`)
+  document.documentElement.style.setProperty('--main-topmargin',`${px+20}px`)
   // console.log(`#content 윗 padding '${px}' 만큼 조절`)
 }
 
@@ -29,7 +29,7 @@ header_input_search.addEventListener('click',(e) => {
   fbWrap.style.visibility = 'visible'
   const px = floatPx(header_paddingTop)
   document.documentElement.style.setProperty('--free-board-transY',`-${px}px`)
-  content_paddingTop(floatPx(header_height)+floatPx(fbWrap_margin)+floatPx(fbWrap_height))
+  content_marginTop(floatPx(header_height)+floatPx(fbWrap_margin)+floatPx(fbWrap_height))
 })
 
 frmSearch.addEventListener('submit',(e) => {
@@ -43,7 +43,7 @@ closeBtn.addEventListener('click',(e) => {
     fbWrap.style.visibility = 'hidden'
     const px = floatPx(fbWrap_height)+floatPx(header_height)-floatPx(header_paddingTop)
     document.documentElement.style.setProperty('--free-board-transY',`-${px}px`)
-    content_paddingTop(floatPx(header_height)+floatPx(fbWrap_margin))
+    content_marginTop(floatPx(header_height)+floatPx(fbWrap_margin))
   }
 })
 
@@ -77,17 +77,25 @@ function floatPx(px) {
 
 // main.js 참조시 기본실행
 const init = () => {
-  content_paddingTop(floatPx(header_height))
+  content_marginTop(floatPx(header_height))
   root_header_height(floatPx(header_height))
 }
 init()
+
+function popUpFullChart(cate,price) {
+  document.querySelector(`#${cate} > .cate > span`).addEventListener('click',(e)=>{
+    window.open(`https://upbit.com/full_chart?code=CRIX.UPBIT.KRW-${cate}`,``,
+      'width=600, height=600, loaction=no, status=no, scrollbars=yes'
+      )
+  })
+}
 
 function insertTable(cate,price,change,rate) {
   document.querySelector(`#${cate} > .price > span`).innerHTML = price
   document.querySelector(`#${cate} > .change_price > span`).innerHTML = change
   document.querySelector(`#${cate} > .change_price`).style.paddingLeft = '14px'
   document.querySelector(`#${cate} > .percent > span`).innerHTML = '%'
-  if ( rate > 0) {
+  if ( rate > 0) {``
     const plusRate = rate
     document.querySelector(`#${cate} > .plusMinus > span`).innerHTML = '+'
     document.querySelector(`#${cate} > .rate > span`).innerHTML = plusRate
@@ -143,65 +151,83 @@ function connectWS() {
     let str_d = enc.decode(arr);
     let responseData = JSON.parse(str_d);
     console.log(responseData) //->filterRequest에서 거른 데이터들이 d라는 변수에 들어가있는데 객체형태이므로 뽑아서 사용
+    let coin = ''
     if(responseData.type === "ticker") { // 현재가 데이터
+      let price = responseData.trade_price.toLocaleString()
+      let changePrice = responseData.signed_change_price.toLocaleString()
+      let changeRate = (responseData.signed_change_rate * 100).toFixed(2)
       switch (responseData.code) {
         case "KRW-BTC" :
-          insertTable('btc',
-            responseData.trade_price.toLocaleString()
-            ,responseData.signed_change_price.toLocaleString(),
-            (responseData.signed_change_rate * 100).toFixed(2)
+          coin = 'BTC'
+          insertTable(coin,
+            price,
+            changePrice,
+            changeRate
           )
+          popUpFullChart(coin,price)
           break;
         case "KRW-XRP" :
-          insertTable('xrp'
-            ,responseData.trade_price.toLocaleString(),
-            responseData.signed_change_price.toLocaleString(),
-            (responseData.signed_change_rate * 100).toFixed(2)
+          coin = 'XRP'
+          insertTable(coin,
+            price,
+            changePrice,
+            changeRate
           )
+          popUpFullChart(coin,price)
           break;
         case "KRW-ADA" :
-          insertTable('ada',
-            responseData.trade_price.toLocaleString(),
-            responseData.signed_change_price.toLocaleString(),
-            (responseData.signed_change_rate * 100).toFixed(2)
+          coin = 'ADA'
+          insertTable(coin,
+            price,
+            changePrice,
+            changeRate
           )
+          popUpFullChart(coin,price)
           break;
         case "KRW-AQT" :
-          insertTable('aqt',
-            responseData.trade_price.toLocaleString(),
-            responseData.signed_change_price.toLocaleString(),
-            (responseData.signed_change_rate * 100).toFixed(2)
+          coin = 'AQT'
+          insertTable(coin,
+            price,
+            changePrice,
+            changeRate
           )
+          popUpFullChart(coin,price)
           break;
         case "KRW-ETH" :
-          insertTable('eth',
-            responseData.trade_price.toLocaleString(),
-            responseData.signed_change_price.toLocaleString(),
-            (responseData.signed_change_rate * 100).toFixed(2)
+          coin = 'ETH'
+          insertTable(coin,
+            price,
+            changePrice,
+            changeRate
           )
+          popUpFullChart(coin,price)
           break;
         case "KRW-SOL" :
-          insertTable('sol',
-            responseData.trade_price.toLocaleString(),
-            responseData.signed_change_price.toLocaleString(),
-            (responseData.signed_change_rate * 100).toFixed(2)
+          coin = 'SOL'
+          insertTable(coin,
+            price,
+            changePrice,
+            changeRate
           )
+          popUpFullChart(coin,price)
           break;
         case "KRW-KNC" :
-          insertTable('knc',
+          coin = 'KNC'
+          insertTable(coin,
             responseData.trade_price.toLocaleString(),
             responseData.signed_change_price.toLocaleString(),
             (responseData.signed_change_rate * 100).toFixed(2)
           )
+          popUpFullChart(coin,price)
           break;
       }
     }
-    if(d.type == "orderbook") { // 호가 데이터
-    // TODO
-    }
-    if(d.type == "trade") { // 체결 데이터
-
-    }
+    // if(d.type == "orderbook") { // 호가 데이터
+    // // TODO
+    // }
+    // if(d.type == "trade") { // 체결 데이터
+    //
+    // }
   }
 }
 // 웹소켓 연결 해제
