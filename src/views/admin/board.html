@@ -1,27 +1,34 @@
+
 {% extends "../publicTemplate/layout.html" %}
 {% block content %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="/.css"> -->
-
-    <title>admin</title>
-</head>
-<body>
-<!-- 
-    게시물리스트 보여야되고
-    숨기기 -->
-
-
-
+<link rel="stylesheet" href="/css/board/list.css">
 <div id="board_list" class="paddingTop_content">
-    <h1>관리자가 수정할수 있는 게시물들 </h1>
+    <h1>관리자의 게시판 수정</h1>
+    <a id="write" href="/board/write">글 수정 </a>
+    <div id="rank">
+        <h2>포인트 랭킹</h2>
+        <span id="ranking1"></span>
+        <span id="ranking2"></span>
+        <span id="ranking3"></span>
+        <span id="ranking4"></span>
+        <span id="ranking5"></span>
+        
+        
+    </div>
     <table cellspacing="0" cellpadding="0" id="board">
         <thead>
+            <h3>카테고리를 선택해주세요!!</h3>
+            <select id="board_cate_name" onchange="showValue(this)" name="category">
+                <optgroup label="메인카테고리">
+                <option>카테고리</option>
+                <option></option>
+                <option></option>
+                <option></option>
+                <option></option>
+                <option></option>
+                <option></option>
+                </optgroup>
+            </select>
         <tr>
             <th>번호</th>
             <th class="subject">제목</th>
@@ -40,7 +47,6 @@
 
         </ul>
     </div>
-
     <template id="board_row">
         <tr>
             <td class="board_list_td">{idx}</td>
@@ -52,10 +58,11 @@
         </tr>
     </template>
 </div>
-<script type="text/javascript" src="/js/board/list.js"></script>
+<script type="text/javascript" src="/js/admin/board.js"></script>
 
 
 
+<!-- 
     <div id="admin_home_wrap">
         <div id="wrap">
             <h4 id="pagename">관리자의  게시물 수정 페이지</h4>
@@ -78,10 +85,11 @@
 
     </div>
 
-</body>
+</body> -->
 
 <button><h2><a href="../admin/user">유저 관리 페이지로</a></h2></button>
 <button><h2><a href="../admin/category">카테고리 관리 페이지로 </h2></button>
     <button><a href="../admin">관리자 메인 페이지</a></button>
+
 
 {% endblock %}
