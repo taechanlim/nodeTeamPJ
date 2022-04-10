@@ -2,12 +2,23 @@
 {% block content %}
 <div id="adminpage">
     <h1>관리자 페이지</h1>
+    <div style="margin: 50px;">
+        <h1>카테고리 최대갯수는 '전체'를 포함해 7개입니다.</h1>
+        <h3>현재 카테고리 :
+           <span id="cate_list"></span>
+           <span id="cate_list"></span>
+           <span id="cate_list"></span>
+           <span id="cate_list"></span>
+           <span id="cate_list"></span>
+           <span id="cate_list"></span>
+           <span id="cate_list"></span>
+        </h3>
+        </div>
     <ul>
         <li>
-           
-            <form id="category_delete_form" method="post" action="http://localhost4001/api/category/mainPlus">
-                <input id="idx_hidden" type="hidden" name="idx" value="">
-                <input id="update_btn" type="submit" value="카테고리 추가">
+            <form id="category_plus_form" method="post" action="http://localhost4001/api/category/mainPlus">
+                카테고리 추가 : <input id="plus_input" type="text">
+                <input id="plus_btn" type="submit" value="카테고리 추가">
             </form>
         </li>
         <li>
@@ -47,4 +58,6 @@
    <button> <h2><a href="../admin/board">게시판 관리 페이지로</a></h2> </button>
 <button><h2><a href="../admin/user">유저 관리 페이지로</a></h2></button>
 <button><a href="../admin">관리자 메인 페이지</a></button>
+
+<script type="text/javascript" src="/js/admin/category.js"></script>
 {% endblock %}
