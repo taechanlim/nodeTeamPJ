@@ -12,6 +12,12 @@ const root_header_height = (px) => {
   document.documentElement.style.setProperty('--header-height',`${px}px`)
 }
 
+// 메인 접속시 헤더-보더 위로 이동
+document.addEventListener('DOMContentLoaded',(e)=>{
+  const px = floatPx(fbWrap_height)+floatPx(header_height)
+  document.documentElement.style.setProperty('--free-board-transY',`-${px}px`)
+})
+
 // #content의 paddingTop 조절
 const content_marginTop = (px) => {
   console.log(px)
@@ -19,14 +25,10 @@ const content_marginTop = (px) => {
   // console.log(`#content 윗 padding '${px}' 만큼 조절`)
 }
 
-document.addEventListener('DOMContentLoaded',(e)=>{
-  const px = floatPx(fbWrap_height)+floatPx(header_height)
-  document.documentElement.style.setProperty('--free-board-transY',`-${px}px`)
-})
-
 header_input_search.addEventListener('click',(e) => {
   fbWrap.style.opacity = '1'
   fbWrap.style.visibility = 'visible'
+  closeBtn.style.opacity = '1'
   const px = floatPx(header_paddingTop)
   document.documentElement.style.setProperty('--free-board-transY',`-${px}px`)
   content_marginTop(floatPx(header_height)+floatPx(fbWrap_margin)+floatPx(fbWrap_height))
@@ -34,6 +36,7 @@ header_input_search.addEventListener('click',(e) => {
 
 frmSearch.addEventListener('submit',(e) => {
   e.preventDefault()
+  closeBtn.style.opacity = '1'
 })
 
 // 닫기버튼 누를시 태그검색에 내용이 들어가 있어도 강제로 닫음
@@ -41,32 +44,12 @@ closeBtn.addEventListener('click',(e) => {
   if (header_input_search.style.opacity !== '0') {
     fbWrap.style.opacity = '0'
     fbWrap.style.visibility = 'hidden'
+    closeBtn.style.opacity = '0'
     const px = floatPx(fbWrap_height)+floatPx(header_height)-floatPx(header_paddingTop)
     document.documentElement.style.setProperty('--free-board-transY',`-${px}px`)
     content_marginTop(floatPx(header_height)+floatPx(fbWrap_margin))
   }
 })
-
-// 태그검색에 내용이 하나라도 적히면 board 보임
-
-
-// 태그검색에 내용이 비워져있을때 다른 곳을 클릭하면 위로 올라감
-// content.addEventListener('click',(e) => {
-//   if (header_input_search.value === '' && fbWrap.style.opacity !== '0') {
-//     fbWrap.style.opacity = '0'
-//     fbWrap.style.visibility = 'hidden'
-//     fbWrap.style.transform =`translateY( 0px )`
-//     content.style.transform =`translateY( 0px )`
-//   }
-// })
-
-// document.addEventListener('',(e)=>{
-//   // document.querySelector('#header_wrap')
-//   console.log('hihihi')
-//   const header_height = window.getComputedStyle(document.querySelector('#header_wrap')).height
-//   console.log(header_height)
-//   document.documentElement.style.setProperty('--main-toppadding',`${header_height}`)
-// })
 
 function floatPx(px) {
   const [v] = px.split('px',1)
@@ -81,169 +64,3 @@ const init = () => {
   root_header_height(floatPx(header_height))
 }
 init()
-
-function popUpFullChart(cate,price) {
-  document.querySelector(`#${cate} > .cate > span`).addEventListener('click',(e)=>{
-    window.open(`https://upbit.com/full_chart?code=CRIX.UPBIT.KRW-${cate}`,``,
-      'width=600, height=600, loaction=no, status=no, scrollbars=yes'
-      )
-  })
-}
-
-function insertTable(cate,price,change,rate) {
-  document.querySelector(`#${cate} > .price > span`).innerHTML = price
-  document.querySelector(`#${cate} > .change_price > span`).innerHTML = change
-  document.querySelector(`#${cate} > .change_price`).style.paddingLeft = '14px'
-  document.querySelector(`#${cate} > .percent > span`).innerHTML = '%'
-  if ( rate > 0) {``
-    const plusRate = rate
-    document.querySelector(`#${cate} > .plusMinus > span`).innerHTML = '+'
-    document.querySelector(`#${cate} > .rate > span`).innerHTML = plusRate
-    document.querySelector(`#${cate} > .price`).style.color = '#c84a31'
-    document.querySelector(`#${cate} > .change_price`).style.background = 'url(https://cdn.upbit.com/images/ico_up.dd56022.png) 0 no-repeat'
-    document.querySelector(`#${cate} > .change_price`).style.color = '#c84a31'
-    document.querySelector(`#${cate} > .plusMinus`).style.color = '#c84a31'
-    document.querySelector(`#${cate} > .rate`).style.color = '#c84a31'
-    document.querySelector(`#${cate} > .percent`).style.color = '#c84a31'
-  } else if (rate < 0) {
-    const minusRate = rate * -1
-    document.querySelector(`#${cate} > .plusMinus > span`).innerHTML = '-'
-    document.querySelector(`#${cate} > .rate > span`).innerHTML = minusRate
-    document.querySelector(`#${cate} > .price`).style.color = '#1261c4'
-    document.querySelector(`#${cate} > .change_price`).style.background = 'url(https://cdn.upbit.com/images/ico_down.3beaa54.png) 0 no-repeat'
-    document.querySelector(`#${cate} > .change_price`).style.color = '#1261c4'
-    document.querySelector(`#${cate} > .plusMinus`).style.color = '#1261c4'
-    document.querySelector(`#${cate} > .rate`).style.color = '#1261c4'
-    document.querySelector(`#${cate} > .percent`).style.color = '#1261c4'
-  }
-}
-
-let socket; // 소켓
-// 웹소켓 연결
-function connectWS() {
-  if(socket != undefined){
-    socket.close();
-  }
-  socket = new WebSocket("wss://api.upbit.com/websocket/v1");
-  socket.binaryType = 'arraybuffer';
-  socket.onopen   = function(e){
-    filterRequest(`[
-                          {"ticket":"UNIQUE_TICKET"},
-                          {"type":"ticker","codes":["KRW-BTC"]},
-                          {"type":"ticker","codes":["KRW-XRP"]},
-                          {"type":"ticker","codes":["KRW-ADA"]},
-                          {"type":"ticker","codes":["KRW-AQT"]},
-                          {"type":"ticker","codes":["KRW-ETH"]},
-                          {"type":"ticker","codes":["KRW-SOL"]},
-                          {"type":"ticker","codes":["KRW-KNC"]},
-                          {"type":"orderbook","codes":["KRW-BTC"]},
-                          {"type":"trade","codes":["KRW-BTC"]}
-                        ]`
-    );
-  }
-    //filterRequest -> 데이터 필드값(현재가,거래가,종가,호가 등등)
-  socket.onclose  = function(e){
-    socket = undefined;
-  }
-  socket.onmessage= function(e){
-    let enc = new TextDecoder("utf-8");
-    let arr = new Uint8Array(e.data);
-    let str_d = enc.decode(arr);
-    let responseData = JSON.parse(str_d);
-    console.log(responseData) //->filterRequest에서 거른 데이터들이 d라는 변수에 들어가있는데 객체형태이므로 뽑아서 사용
-    let coin = ''
-    if(responseData.type === "ticker") { // 현재가 데이터
-      let price = responseData.trade_price.toLocaleString()
-      let changePrice = responseData.signed_change_price.toLocaleString()
-      let changeRate = (responseData.signed_change_rate * 100).toFixed(2)
-      switch (responseData.code) {
-        case "KRW-BTC" :
-          coin = 'BTC'
-          insertTable(coin,
-            price,
-            changePrice,
-            changeRate
-          )
-          popUpFullChart(coin,price)
-          break;
-        case "KRW-XRP" :
-          coin = 'XRP'
-          insertTable(coin,
-            price,
-            changePrice,
-            changeRate
-          )
-          popUpFullChart(coin,price)
-          break;
-        case "KRW-ADA" :
-          coin = 'ADA'
-          insertTable(coin,
-            price,
-            changePrice,
-            changeRate
-          )
-          popUpFullChart(coin,price)
-          break;
-        case "KRW-AQT" :
-          coin = 'AQT'
-          insertTable(coin,
-            price,
-            changePrice,
-            changeRate
-          )
-          popUpFullChart(coin,price)
-          break;
-        case "KRW-ETH" :
-          coin = 'ETH'
-          insertTable(coin,
-            price,
-            changePrice,
-            changeRate
-          )
-          popUpFullChart(coin,price)
-          break;
-        case "KRW-SOL" :
-          coin = 'SOL'
-          insertTable(coin,
-            price,
-            changePrice,
-            changeRate
-          )
-          popUpFullChart(coin,price)
-          break;
-        case "KRW-KNC" :
-          coin = 'KNC'
-          insertTable(coin,
-            responseData.trade_price.toLocaleString(),
-            responseData.signed_change_price.toLocaleString(),
-            (responseData.signed_change_rate * 100).toFixed(2)
-          )
-          popUpFullChart(coin,price)
-          break;
-      }
-    }
-    // if(d.type == "orderbook") { // 호가 데이터
-    // // TODO
-    // }
-    // if(d.type == "trade") { // 체결 데이터
-    //
-    // }
-  }
-}
-// 웹소켓 연결 해제
-function closeWS() {
-  if(socket != undefined){
-    socket.close();
-    socket = undefined;
-  }
-}
-// 웹소켓 요청
-function filterRequest(filter) {
-  if(socket == undefined){
-    alert('no connect exists');
-    return;
-  }
-  socket.send(filter);
-}
-connectWS();
-
