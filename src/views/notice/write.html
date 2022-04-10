@@ -1,0 +1,14 @@
+{% extends "../publicTemplate/layout.html" %}
+{% block content %}
+<link rel="stylesheet" href="/css/board/write.css">
+<h1>공지사항 쓰기 페이지</h1>
+
+<form id="board_write_Frm" method="post" action="http://localhost:4001/notice/write" enctype="multipart/form-data" style="padding-top: 50px;">
+    <a href="/notice/board">목록 돌아가기</a>
+
+    <input id="board_subject" type="text" name="subject" placeholder="제목">
+    <input id="board_content" type="text" name="content" placeholder="컨텐트">
+    <input id="board_write_btn" type="submit" value="글쓰기">
+</form>
+<script type="text/javascript" src="/js/notice/write.js"></script>
+{% endblock %}

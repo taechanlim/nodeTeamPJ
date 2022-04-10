@@ -1,0 +1,38 @@
+{% extends "../publicTemplate/layout.html" %}
+{% block content %}
+<link rel="stylesheet" href="/css/board/list.css">
+<div id="board_list" class="paddingTop_content">
+    <h1>여긴 공지사항 리스트야</h1>
+    <a id="write" href="/notice/write">글쓰러가기</a>
+    
+    <table cellspacing="0" cellpadding="0" id="board">
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th class="subject">제목</th>
+            <th>작성자</th>
+            <th>작성일</th>
+            <th>조회수</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <div id="paging">
+        <ul>
+
+        </ul>
+    </div>
+    <template id="board_row">
+        <tr>
+            <td class="board_list_td">{idx}</td>
+            <td class="td_subject"></td>
+            <td class="board_list_td">{nickname}</td>
+            <td class="board_list_td">{date}</td>
+            <td class="board_list_td">{hit}</td>
+        </tr>
+    </template>
+</div>
+<script type="text/javascript" src="/js/notice/board.js"></script>
+{% endblock %}

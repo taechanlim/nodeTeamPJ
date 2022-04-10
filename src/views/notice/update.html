@@ -1,0 +1,14 @@
+{% extends "../publicTemplate/layout.html" %}
+{% block content %}
+<link rel="stylesheet" href="/css/board/update.css">
+<div id="board_view" class="paddingTop_content">
+    <h1>글 수정</h1>
+    <form id="board_update_form" method="post" action="http://localhost4001/api/notice/update">
+        <span>제목 : <input id="update_subject" name="subject" value=""></span>
+        <span>닉네임 : <span id="nickname"></span></span>
+        <span>내용 : <input id="update_content" name="content" value=""></span>
+        <input id="update_btn" type="submit" value="수정하기">
+    </form>
+</div>
+<script type="text/javascript" src="/js/notice/update.js"></script>
+{% endblock %}
