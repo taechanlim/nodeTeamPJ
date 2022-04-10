@@ -5,9 +5,12 @@
     <h3 id="list_pagename">회원 리스트</h3>
     <div class="admin_list">
         <div class="text">
-            <h2>관리자 <p>(level 3)</p></h2>
-            <h2>중간사용자 <p> (level 2) </p>     </h2>
-            <h2>사용자 <p>(level 1)</p></h2>
+            <br>
+            <br>
+
+         
+          
+            <h2> 회원정보 </h2>
         </div>
         <div class="admin1">
             <ul>
@@ -17,21 +20,9 @@
                 {% endif %}
                 {% endfor %}
             </ul>    
-            <ul>
-                {% for data in rows %}
-                {% if data.level == 2 %}
-                <li><a href='/admin/user/?nickname={{nickname}}'>{{nickname}}</a></li>
-                {% endif %}
-                {% endfor %}
-            </ul>    
+          
          
-            <ul>
-                {% for data in rows %}
-                {% if data.level == 3 %}
-                <li><a href='/admin/user/?nickname={{nickname}'>{{nickname}}</a></li>
-                {% endif %}
-                {% endfor %}
-            </ul>   
+           
         </div>
     </div>
     <div class="list_button">

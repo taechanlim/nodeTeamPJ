@@ -1,0 +1,13 @@
+p{
+    text-align: center;
+    color : green;
+
+    font-size: xx-large;
+}
+
+box{
+    display: inline-block;
+    width: 100px;
+    margin : auto;
+    text-align:  center;
+}
