@@ -14,6 +14,11 @@ router.get('/user',(req,res)=>{
   renderWithToken(req, res, './admin/user')
 })
 
+router.get('/list',(req,res)=>{
+  console.log('--------------------- 관리자 유저  list 관리 페이지 2---------------------')
+  renderWithToken(req, res, './admin/list')
+})
+
 // 게시판 관리 페이지
 router.get('/board',(req,res)=>{
   console.log('--------------------- 관리자 게시판 관리 페이지 ---------------------')

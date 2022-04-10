@@ -1,11 +1,38 @@
 
 {% extends "../publicTemplate/layout.html" %}
 {% block content %}
+
+
 <link rel="stylesheet" href="/css/board/list.css">
 <div id="board_list" class="paddingTop_content">
-    <h1>관리자의 게시판 수정</h1>
-    <a id="write" href="/board/update">글 수정 </a>
-     <tr>
+    <h1>여긴 게시판 리스트야</h1>
+    <a id="write" >글수정 가능</a>
+    <div id="rank">
+        <h2>포인트 랭킹</h2>
+        <span id="ranking1"></span>
+        <span id="ranking2"></span>
+        <span id="ranking3"></span>
+        <span id="ranking4"></span>
+        <span id="ranking5"></span>
+        
+        
+    </div>
+    <table cellspacing="0" cellpadding="0" id="board">
+        <thead>
+            <h3>카테고리를 선택해주세요!!</h3>
+            <select id="board_cate_name" onchange="showValue(this)" name="category">
+                <optgroup label="메인카테고리">
+                <option>카테고리</option>
+                <option></option>
+                <option></option>
+                <option></option>
+                <option></option>
+                <option></option>
+                <option></option>
+                <option></option>
+                </optgroup>
+            </select>
+        <tr>
             <th>번호</th>
             <th class="subject">제목</th>
             <th>작성자</th>
@@ -34,36 +61,8 @@
         </tr>
     </template>
 </div>
-<script type="text/javascript" src="/js/admin/board.js"></script>
-
-
-
-<!-- 
-    <div id="admin_home_wrap">
-        <div id="wrap">
-            <h4 id="pagename">관리자의  게시물 수정 페이지</h4>
-            <div class="category_edit">
-
-
-                <div> <input type="text" id="input"> 수정 할 카테고리 <span id="result"></span>
-                    <script>
-                      input.oninput = function() {
-                        result.innerHTML = input.value;
-                      };
-                    </script>
-                </div>
-            </div>
-            <div class="board_edit">
-                <div class="button">
-                <button><a href="/">게시물 숨기는 버튼</button>
-                 </div>
-           </div>
-
-    </div>
-
-</body> -->
-
-<button><h2><a href="../admin/user">유저 관리 페이지로</a></h2></button>
+<script type="text/javascript" src="/js/board/list.js"></script>
+<button><h2><a href="../admin/list">유저 관리 페이지로</a></h2></button>
 <button><h2><a href="../admin/category">카테고리 관리 페이지로 </h2></button>
     <button><h2><a href="../admin">관리자 메인 페이지</a></h2></button>
 
