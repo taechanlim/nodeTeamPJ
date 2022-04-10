@@ -1,0 +1,29 @@
+{% extends "../publicTemplate/layout.html" %}
+{% block content %}
+<link rel="stylesheet" href="/css/board/view.css">
+<div id="board_view_wrap" class="paddingTop_content">
+    <div id="board_view">
+        <div id="sector">
+        <span><a href="/notice/board">목록 돌아가기</a></span>
+        <span>제목 : <span id="subject"></span></span>
+        <span>닉네임 : <span id="nickname"></span> </span>
+        </div>
+        <div id="sector2">
+        <span>내용 : <span id="content"></span></span>
+        </div>
+        
+        <div id="update_delete">
+        <h2><a id="update_link" href="">수정하기</a></h2>
+        <form id="board_delete_form" method="post" action="http://localhost4001/api/notice/delete">
+            <input id="idx_hidden" type="hidden" name="idx" value="">
+            <input id="delete_btn" type="submit" value="삭제하기">
+        </form>
+        </div>
+
+    </div>
+</div>
+
+
+<script type="text/javascript" src="/js/notice/view.js"></script>
+
+{% endblock %}

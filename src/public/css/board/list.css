@@ -12,7 +12,7 @@
 #rank{
     position: absolute;
     right:700px;
-    top:100px;
+    top:70px;
     border: 1px solid red;
 }
 #rank > h2{
