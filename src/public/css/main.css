@@ -58,8 +58,45 @@ input:-webkit-autofill:active {
     transition: all ease 1s 0s;
 }
 
+#content {
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-bottom: 50px;
+}
+
 .paddingTop_content {
     padding-top: var(--main-toppadding);
+}
+
+#table_price {
+    margin: 0 auto;
+    font-size: 36px;
+}
+
+#table_price > table > tbody > tr > td {
+    white-space: nowrap;
+}
+
+#table_price_legend {
+    float: right;
+    font-size: 24px;
+    color: gray;
+}
+
+#table_price tr {
+    height: 70px;
+}
+
+#table_price .cate {
+    font-family: '-KITA-Regular';
+}
+
+#table_price .cate, .price, .rate {
+    text-align: right;
+}
+
+#table_price .cate, .price, .change_price {
+    padding-right: 30px;
 }
 
 /* header.html */

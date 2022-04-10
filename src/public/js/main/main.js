@@ -15,7 +15,7 @@ const root_header_height = (px) => {
 // #content의 paddingTop 조절
 const content_paddingTop = (px) => {
   console.log(px)
-  document.documentElement.style.setProperty('--main-toppadding',`${px}px`)
+  document.documentElement.style.setProperty('--main-toppadding',`${px+20}px`)
   // console.log(`#content 윗 padding '${px}' 만큼 조절`)
 }
 
@@ -82,6 +82,33 @@ const init = () => {
 }
 init()
 
+function insertTable(cate,price,change,rate) {
+  document.querySelector(`#${cate} > .price > span`).innerHTML = price
+  document.querySelector(`#${cate} > .change_price > span`).innerHTML = change
+  document.querySelector(`#${cate} > .change_price`).style.paddingLeft = '14px'
+  document.querySelector(`#${cate} > .percent > span`).innerHTML = '%'
+  if ( rate > 0) {
+    const plusRate = rate
+    document.querySelector(`#${cate} > .plusMinus > span`).innerHTML = '+'
+    document.querySelector(`#${cate} > .rate > span`).innerHTML = plusRate
+    document.querySelector(`#${cate} > .price`).style.color = '#c84a31'
+    document.querySelector(`#${cate} > .change_price`).style.background = 'url(https://cdn.upbit.com/images/ico_up.dd56022.png) 0 no-repeat'
+    document.querySelector(`#${cate} > .change_price`).style.color = '#c84a31'
+    document.querySelector(`#${cate} > .plusMinus`).style.color = '#c84a31'
+    document.querySelector(`#${cate} > .rate`).style.color = '#c84a31'
+    document.querySelector(`#${cate} > .percent`).style.color = '#c84a31'
+  } else if (rate < 0) {
+    const minusRate = rate * -1
+    document.querySelector(`#${cate} > .plusMinus > span`).innerHTML = '-'
+    document.querySelector(`#${cate} > .rate > span`).innerHTML = minusRate
+    document.querySelector(`#${cate} > .price`).style.color = '#1261c4'
+    document.querySelector(`#${cate} > .change_price`).style.background = 'url(https://cdn.upbit.com/images/ico_down.3beaa54.png) 0 no-repeat'
+    document.querySelector(`#${cate} > .change_price`).style.color = '#1261c4'
+    document.querySelector(`#${cate} > .plusMinus`).style.color = '#1261c4'
+    document.querySelector(`#${cate} > .rate`).style.color = '#1261c4'
+    document.querySelector(`#${cate} > .percent`).style.color = '#1261c4'
+  }
+}
 
 let socket; // 소켓
 // 웹소켓 연결
@@ -92,7 +119,20 @@ function connectWS() {
   socket = new WebSocket("wss://api.upbit.com/websocket/v1");
   socket.binaryType = 'arraybuffer';
   socket.onopen   = function(e){
-    filterRequest('[{"ticket":"UNIQUE_TICKET"},{"type":"ticker","codes":["KRW-BTC"]},{"type":"orderbook","codes":["KRW-BTC"]},{"type":"trade","codes":["KRW-BTC"]}]'); }
+    filterRequest(`[
+                          {"ticket":"UNIQUE_TICKET"},
+                          {"type":"ticker","codes":["KRW-BTC"]},
+                          {"type":"ticker","codes":["KRW-XRP"]},
+                          {"type":"ticker","codes":["KRW-ADA"]},
+                          {"type":"ticker","codes":["KRW-AQT"]},
+                          {"type":"ticker","codes":["KRW-ETH"]},
+                          {"type":"ticker","codes":["KRW-SOL"]},
+                          {"type":"ticker","codes":["KRW-KNC"]},
+                          {"type":"orderbook","codes":["KRW-BTC"]},
+                          {"type":"trade","codes":["KRW-BTC"]}
+                        ]`
+    );
+  }
     //filterRequest -> 데이터 필드값(현재가,거래가,종가,호가 등등)
   socket.onclose  = function(e){
     socket = undefined;
@@ -101,16 +141,66 @@ function connectWS() {
     let enc = new TextDecoder("utf-8");
     let arr = new Uint8Array(e.data);
     let str_d = enc.decode(arr);
-    let d = JSON.parse(str_d);
-    // console.log(d) //->filterRequest에서 거른 데이터들이 d라는 변수에 들어가있는데 객체형태이므로 뽑아서 사용
-    if(d.type == "ticker") { // 현재가 데이터
-    // TODO
+    let responseData = JSON.parse(str_d);
+    console.log(responseData) //->filterRequest에서 거른 데이터들이 d라는 변수에 들어가있는데 객체형태이므로 뽑아서 사용
+    if(responseData.type === "ticker") { // 현재가 데이터
+      switch (responseData.code) {
+        case "KRW-BTC" :
+          insertTable('btc',
+            responseData.trade_price.toLocaleString()
+            ,responseData.signed_change_price.toLocaleString(),
+            (responseData.signed_change_rate * 100).toFixed(2)
+          )
+          break;
+        case "KRW-XRP" :
+          insertTable('xrp'
+            ,responseData.trade_price.toLocaleString(),
+            responseData.signed_change_price.toLocaleString(),
+            (responseData.signed_change_rate * 100).toFixed(2)
+          )
+          break;
+        case "KRW-ADA" :
+          insertTable('ada',
+            responseData.trade_price.toLocaleString(),
+            responseData.signed_change_price.toLocaleString(),
+            (responseData.signed_change_rate * 100).toFixed(2)
+          )
+          break;
+        case "KRW-AQT" :
+          insertTable('aqt',
+            responseData.trade_price.toLocaleString(),
+            responseData.signed_change_price.toLocaleString(),
+            (responseData.signed_change_rate * 100).toFixed(2)
+          )
+          break;
+        case "KRW-ETH" :
+          insertTable('eth',
+            responseData.trade_price.toLocaleString(),
+            responseData.signed_change_price.toLocaleString(),
+            (responseData.signed_change_rate * 100).toFixed(2)
+          )
+          break;
+        case "KRW-SOL" :
+          insertTable('sol',
+            responseData.trade_price.toLocaleString(),
+            responseData.signed_change_price.toLocaleString(),
+            (responseData.signed_change_rate * 100).toFixed(2)
+          )
+          break;
+        case "KRW-KNC" :
+          insertTable('knc',
+            responseData.trade_price.toLocaleString(),
+            responseData.signed_change_price.toLocaleString(),
+            (responseData.signed_change_rate * 100).toFixed(2)
+          )
+          break;
+      }
     }
     if(d.type == "orderbook") { // 호가 데이터
     // TODO
     }
     if(d.type == "trade") { // 체결 데이터
-    // TODO
+
     }
   }
 }
