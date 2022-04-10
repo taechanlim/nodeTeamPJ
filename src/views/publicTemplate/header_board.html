@@ -1,33 +1,21 @@
 <div id="free_board_wrap" class="header_backColor">
-    <table cellspacing="0" cellpadding="0" id="header_board">
-        <thead>
-        <tr>
-            <!-- 썸네일 -->
-            <th>썸네일</th>
-            <!-- 제목 -->
-            <th>제목</th>
-            <!-- 내용 -->
-            <th>내용</th>
-        </tr>
-        </thead>
+    <ul id="header_board">
         <tbody>
 
         </tbody>
-    </table>
-    <div id="header_paging">
-        <ul>
-
-        </ul>
-    </div>
+    </ul>
     <template id="header_board_row">
-        <tr>
-            <!--<td class="board_list_td">{idx}</td>-->
-            <td class="td_thumbnail">{thumbnail}</td>
-            <td class="td_subject"></td>
-            <td class="td_content">{content}</td>
-            <!--<td class="board_list_td">{nickname}</td>-->
-        </tr>
+        <li>
+            <div id="header_board_thumbnail">
+                <span>썸네일 이었던것..</span>
+            </div>
+            <div id="header_board_wrap">
+                <span class="header_board_subject"></span>
+                <span class="header_board_cate"></span>
+                <span class="header_board_elapsed"></span>
+                <span class="header_board_hit_like"></span>
+            </div>
+        </li>
     </template>
-    <button class="btn close_board">x</button>
 </div>
 <script type="text/javascript" src="/js/publicTemplate/header_board.js"></script>

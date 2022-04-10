@@ -1,57 +1,60 @@
 <header id="header_wrap" class="header_backColor">
-    <div id="left_header">
-        <h1 id="logo_header">
-            <a href="/">
-                <span class="font_eae9e9" style="font-family: 'Oxaninum';">.winner(JohnVer)</span>
-            </a>
-        </h1>
-        <!-- 태그(#) 검색, 키브도 입력시 boardlist 밑으로 이동, input 비어있으면 boardlist 위로 숨김 -->
-        <form id="tag_search" method="post" >
-            <svg xmlns = "http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6002 12.0498C9.49758 12.8568 8.13777 13.3333 6.66667 13.3333C2.98477 13.3333 0 10.3486 0 6.66667C0 2.98477 2.98477 0 6.66667 0C10.3486 0 13.3333 2.98477 13.3333 6.66667C13.3333 8.15637 12.8447 9.53194 12.019 10.6419C12.0265 10.6489 12.0338 10.656 12.0411 10.6633L15.2935 13.9157C15.6841 14.3063 15.6841 14.9394 15.2935 15.33C14.903 15.7205 14.2699 15.7205 13.8793 15.33L10.6269 12.0775C10.6178 12.0684 10.6089 12.0592 10.6002 12.0498ZM11.3333 6.66667C11.3333 9.244 9.244 11.3333 6.66667 11.3333C4.08934 11.3333 2 9.244 2 6.66667C2 4.08934 4.08934 2 6.66667 2C9.244 2 11.3333 4.08934 11.3333 6.66667Z"></path>
-            </svg>
-            <input id="input_tag_search" class="font_eae9e9 header_backColor input_search" type="text" name="axiosTest" placeholder="검색시 결과창 나옴">
-            <label style="visibility: hidden"><input type="submit" value="검색"></label>
-        </form>
-    </div>
-    <ul id="right_header">
-        {% if nickname === undefined %}
-        <li>
-            <form id="login_Frm_main" method="post" action="http://localhost:4001/user/login">
-                <div>
-                    <input id="login_userid" class="font_eae9e9 input_search header_backColor" type="text" name="userid" autocomplete="off" placeholder="아이디">
-                    <input id="login_userpw" class="font_eae9e9 input_search header_backColor" type="password" name="userpw" autocomplete="off" placeholder="비밀번호">
-                </div>
-                <input type="submit" value="로그인">
+    <div id="header" class="header_backColor">
+        <div id="left_header">
+            <h1 id="logo_header">
+                <a href="/">
+                    <span class="font_eae9e9" style="font-family: 'Oxaninum';">.winner(JohnVer)</span>
+                </a>
+            </h1>
+            <!-- 태그(#) 검색, 키브도 입력시 boardlist 밑으로 이동, input 비어있으면 boardlist 위로 숨김 -->
+            <form id="tag_search" method="post" >
+                <svg xmlns = "http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M10.6002 12.0498C9.49758 12.8568 8.13777 13.3333 6.66667 13.3333C2.98477 13.3333 0 10.3486 0 6.66667C0 2.98477 2.98477 0 6.66667 0C10.3486 0 13.3333 2.98477 13.3333 6.66667C13.3333 8.15637 12.8447 9.53194 12.019 10.6419C12.0265 10.6489 12.0338 10.656 12.0411 10.6633L15.2935 13.9157C15.6841 14.3063 15.6841 14.9394 15.2935 15.33C14.903 15.7205 14.2699 15.7205 13.8793 15.33L10.6269 12.0775C10.6178 12.0684 10.6089 12.0592 10.6002 12.0498ZM11.3333 6.66667C11.3333 9.244 9.244 11.3333 6.66667 11.3333C4.08934 11.3333 2 9.244 2 6.66667C2 4.08934 4.08934 2 6.66667 2C9.244 2 11.3333 4.08934 11.3333 6.66667Z"></path>
+                </svg>
+                <input id="input_tag_search" class="font_eae9e9 header_backColor input_search" type="text" name="axiosTest" placeholder="검색시 결과창 나옴">
+                <label style="visibility: hidden"><input type="submit" value="검색"></label>
             </form>
-        </li>
-        <li>
-            <a href="/kakao/login"><span class="font_eae9e9">카카오 로그인</span></a>
-        </li>
-        <li>
-            <a href="/user/agree"><span class="font_eae9e9">회원가입</span></a>
-        </li>
-        {% else %}
-        <li>
-            <span class="font_eae9e9">{{ nickname }} 님 어서오세요! 👀</span>
-        </li>
-        <li>
-            <a href="/board/list"><span class="font_eae9e9">게시판</span></a>
-        </li>
-        <li>
-            <a href="/user/mypage"><span class="font_eae9e9">  My Page </span></a>
-        </li>
+        </div>
+        <ul id="right_header">
+            {% if nickname === undefined %}
+            <li>
+                <form id="login_Frm_main" method="post" action="http://localhost:4001/user/login">
+                    <div>
+                        <input id="login_userid" class="font_eae9e9 input_search header_backColor" type="text" name="userid" autocomplete="off" placeholder="아이디">
+                        <input id="login_userpw" class="font_eae9e9 input_search header_backColor" type="password" name="userpw" autocomplete="off" placeholder="비밀번호">
+                    </div>
+                    <input type="submit" value="로그인">
+                </form>
+            </li>
+            <li>
+                <a href="/kakao/login"><span class="font_eae9e9">카카오 로그인</span></a>
+            </li>
+            <li>
+                <a href="/user/agree"><span class="font_eae9e9">회원가입</span></a>
+            </li>
+            {% else %}
+            <li>
+                <span class="font_eae9e9">{{ nickname }} 님 어서오세요! 👀</span>
+            </li>
+            <li>
+                <a href="/board/list"><span class="font_eae9e9">게시판</span></a>
+            </li>
+            <li>
+                <a href="/user/mypage"><span class="font_eae9e9">  My Page </span></a>
+            </li>
 
-        <li>
-            <button id="logout" type="button" value="">로그아웃</button>
-        </li>
-
-        
-        {% endif %}
-        <li>
-            <a href="/notice/list"><span class="font_eae9e9">고객센터</span></a>
-        </li>
-    </ul>
+            <li>
+                <button id="logout" type="button" value="">로그아웃</button>
+            </li>
+            {% endif %}
+            <li>
+                <a href="/notice/list"><span class="font_eae9e9">고객센터</span></a>
+            </li>
+            <li>
+                <button class="btn close_board">x</button>
+            </li>
+        </ul>
+    </div>
     {% include "./header_board.html" %}
 </header>
 

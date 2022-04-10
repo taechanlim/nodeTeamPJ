@@ -65,7 +65,7 @@ input {
     background-color: #aaa598;
     color: white;
     border: none;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 #logout {
@@ -73,7 +73,7 @@ input {
     background-color: #aaa598;
     color: white;
     border: none;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 #login_userid, #login_userpw {
@@ -100,6 +100,17 @@ input:-webkit-autofill:active {
 
 .button_color {
     background-color: #54a03f;
+}
+
+/* 새로만드는 헤더-보더 */
+#free_board_wrap > ul {
+    margin: 0 auto;
+    height: 180px;
+    /* css flex */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
 }
 
 #content, #free_board_wrap {
@@ -176,12 +187,20 @@ input:-webkit-autofill:active {
 /* header.html */
 #header_wrap {
     position: fixed;
-    /*max-width: 1200px;*/
-    height: 60px;
+    height: 70px;
+    z-index: 100;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    /*max-width: 1200px;*/
+    /* css flex */
+    display: flex;
+}
+
+#header {
+    min-width: 1000px;
+    height: 70px;
+    z-index: 101;
     margin: 0 auto;
     box-sizing: border-box;
     padding: 10px 10% 0 10%;
@@ -191,6 +210,7 @@ input:-webkit-autofill:active {
 }
 
 #left_header {
+    max-width: 479px;
     /* css flex */
     display: flex;
 }
@@ -206,6 +226,7 @@ input:-webkit-autofill:active {
 }
 
 #right_header {
+    max-width: 520px;
     /* css flex */
     display: flex;
     align-items: center;
@@ -217,7 +238,7 @@ input:-webkit-autofill:active {
 }
 
 #right_header > li span {
-    font-size: 20px;
+    font-size: 17px;
 }
 
 #logo_home {
@@ -231,6 +252,7 @@ input:-webkit-autofill:active {
     /* css flex */
     display: flex;
     align-items: center;
+    margin-left: 13px;
 }
 
 #tag_search > svg {
@@ -258,13 +280,64 @@ input:-webkit-autofill:active {
     visibility: visible;
 }
 
-#free_board_wrap > table {
-    margin: 0 auto;
+#header_board {
+    width: 1200px;
+    background-color: #aaa598;
+}
+
+#header_board li {
+    background-color: #aaa598;
+    color: #eae9e9;
+    width: 20%;
+    height: 47%;
+    /* css flex */
+    display: flex;
+}
+
+#header_board_thumbnail {
+    background-color: #333333;
+    width: 84px;
+    /* css flex */
+    display: flex;
+    align-items: center;
+}
+
+#header_board_wrap {
+    width: 150px;
+    /* css flex */
+    display: flex;
+    flex-direction: column;
+}
+
+.header_board_subject {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.header_board_cate {
+    text-align: right;
+    padding-right: 30px;
+}
+
+.header_board_elapsed {
+    text-align: right;
+    padding-right: 30px;
+}
+
+.header_board_hit_like {
+    text-align: right;
+    padding-right: 30px;
+    font-size: 14px;
 }
 
 .close_board {
-    position: absolute;
-    right: 100px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    font-size: 30px;
+    background-color: #aaa598;
+    opacity: 0;
 }
 
 /* join.html */
