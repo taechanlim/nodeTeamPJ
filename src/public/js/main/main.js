@@ -142,7 +142,7 @@ function connectWS() {
     let arr = new Uint8Array(e.data);
     let str_d = enc.decode(arr);
     let responseData = JSON.parse(str_d);
-    console.log(responseData) //->filterRequest에서 거른 데이터들이 d라는 변수에 들어가있는데 객체형태이므로 뽑아서 사용
+    //console.log(responseData) //->filterRequest에서 거른 데이터들이 d라는 변수에 들어가있는데 객체형태이므로 뽑아서 사용
     if(responseData.type === "ticker") { // 현재가 데이터
       switch (responseData.code) {
         case "KRW-BTC" :
@@ -196,12 +196,12 @@ function connectWS() {
           break;
       }
     }
-    if(d.type == "orderbook") { // 호가 데이터
-    // TODO
-    }
-    if(d.type == "trade") { // 체결 데이터
+    // if(d.type == "orderbook") { // 호가 데이터
+    // // TODO
+    // }
+    // if(d.type == "trade") { // 체결 데이터
 
-    }
+    // }
   }
 }
 // 웹소켓 연결 해제
