@@ -81,8 +81,8 @@ function writeElapsed(writtenDate) {
 }
 
 function boardOutput(axiosRes) {
-  // const Nodes =  response.data.result.slice(5);
-  const Nodes = axiosRes.data.result
+  // 10개까지만 보여줌.
+  const Nodes = axiosRes.data.result.slice(undefined,10)
   console.log(Nodes)
   let template = ''
   const board_row = document.querySelector('#header_board_row')
