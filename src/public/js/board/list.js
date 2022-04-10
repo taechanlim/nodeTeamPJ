@@ -1,4 +1,4 @@
-console.log('보드리스트 확인')
+
 const showValue = (target) => {
   const t = target.value
   location = `http://localhost:3000/board/list?${t}`
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded',async (e)=>{
     withCredentials:true,
   })
   const userrank = response_rank.data.result
-  console.log('나다',userrank[1].point)
+  // console.log('나다',userrank[1].point)
   rank1.innerHTML = '1위 :'+ userrank[0].nickname + ' ,포인트 :'+ userrank[0].point
   rank2.innerHTML = '2위 :'+ userrank[1].nickname + ' ,포인트 :'+ userrank[1].point
   rank3.innerHTML = '3위 :'+ userrank[2].nickname + ' ,포인트 :'+userrank[2].point
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded',async (e)=>{
     const optgroup = cate_select.querySelector('optgroup')
     const opt = cate_select.querySelectorAll('optgroup>option')
     const optlist = response.data.result
-    
+    // console.log('이거이거',response.data)
     for(let i=0; i<optlist.length;i++){
       opt[i+1].innerHTML = optlist[i].cate_name
     }

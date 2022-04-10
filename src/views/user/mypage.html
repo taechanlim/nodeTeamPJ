@@ -1,15 +1,6 @@
 {% extends "../publicTemplate/layout.html" %}
 {% block content %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이페이지 </title>
-</head>
-</head>
-<body>
+
     <div id="wrap">
         <h3 id="pagename_profile"> 내 정보</h3>
         <div id="profile_wrap">
@@ -17,13 +8,14 @@
                 <div class="profile_info_view">
 
                     <br><br><br>
-                    <p><span>" {{phonenumber}}" </span>님 반갑습니다.</p>
+                    <p><span>" {{nickname}}" </span>님 반갑습니다.</p>
                   
-                 <p>핸드폰번호: {{phonenumber}}</p>       
+                    <p>핸드폰번호: {{phonenumber}}</p>       
                     <p>주소 :{{address}}</p>
                     <p>레벨 :{{level}} </p>
                     <p>포인트 :{{point}} </p> 
                 </div>
+              
 
     <div id="wrap">
         <h3 id="b_name">"내 작성글"</h3>
@@ -43,6 +35,8 @@
             <button class="main"><a href="/">메인으로</a></button>
         </div>
     </div>
-</body>
-</html>
+
+    <!-- 
+        여기 자바스크립트 연결.....<script src ="/mypage.js
+     -->
 {% endblock %}

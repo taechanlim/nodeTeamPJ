@@ -29,7 +29,7 @@ if (login_Frm) {
                   닉네임 : ${response.data.result[0].nickname}
               `)
 
-      location.href = 'http://localhost:3000'
+      location.href = 'http://localhost:3000/user/welcome'
     } catch (e) {
       alert('아이디 와 패스워드 확인해주셈.')
     }
