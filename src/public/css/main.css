@@ -345,7 +345,7 @@ input:-webkit-autofill:active {
 #join_frm {
     margin: 0 auto;
     width: 465px;
-    padding: 20px 0 50px 0;
+    padding: 60px 0 50px 0;
 }
 
 .ps_box, .ps_box > input, select {
@@ -386,6 +386,9 @@ input:-webkit-autofill:active {
     border: 1px solid #dadada;
 }
 
+.ps_introduce {
+    height: 125px;
+}
 .ps_select_gender, .ps_select_month, .ps_select_region {
     width: 100%;
     height: 30px;
@@ -419,6 +422,10 @@ input:-webkit-autofill:active {
 #introduce {
     width: 100%;
     height: 100px;
+    border: none;
+    resize: none;
+    box-sizing: border-box;
+    padding: 10px;
 }
 
 #join_btn {
