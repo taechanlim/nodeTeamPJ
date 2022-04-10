@@ -4,37 +4,12 @@ const showValue = (target) => {
   location = `http://localhost:3000/board/list?${t}`
 }
 
-
-let list = {}
-document.addEventListener('DOMContentLoaded',async (e)=>{
-
-  const rank1 = document.querySelector('#ranking1')
-  const rank2 = document.querySelector('#ranking2')
-  const rank3 = document.querySelector('#ranking3')
-  const rank4 = document.querySelector('#ranking4')
-  const rank5 = document.querySelector('#ranking5')
-
-
-  const response_rank = await axios.post('http://localhost:4001/api/board/list_ranking',{
-    withCredentials:true,
-  })
-  const userrank = response_rank.data.result
-  console.log('나다',userrank[1].point)
-  rank1.innerHTML = '1위 :'+ userrank[0].nickname + ' ,포인트 :'+ userrank[0].point
-  rank2.innerHTML = '2위 :'+ userrank[1].nickname + ' ,포인트 :'+ userrank[1].point
-  rank3.innerHTML = '3위 :'+ userrank[2].nickname + ' ,포인트 :'+userrank[2].point
-  rank4.innerHTML = '4위 :'+ userrank[3].nickname + ' ,포인트 :'+userrank[3].point
-  rank5.innerHTML = '5위 :'+ userrank[4].nickname + ' ,포인트 :'+userrank[4].point
-  // 요청에대한 코드를 작성해서 결과물을 받아와야합니다.
-  const cate_name = document.querySelector('#board_cate_name')
-  const category = location.href.split('?')[1]
-  const body = {
-    cate_name:decodeURIComponent(category)
-  }
   const response = await axios.post('http://localhost:4001/api/board/list',body,{
     withCredentials:true,
   })
   // console.log(response.data.result2)
+
+
 
   const cate_select = document.querySelector('#board_cate_name')
   console.log(cate_select)
@@ -43,6 +18,8 @@ document.addEventListener('DOMContentLoaded',async (e)=>{
       'Content-type':'application/json',
       withCredentials:true,
     })
+
+
     // console.log(response.data.result)
     const optgroup = cate_select.querySelector('optgroup')
     const opt = cate_select.querySelectorAll('optgroup>option')
@@ -53,13 +30,16 @@ document.addEventListener('DOMContentLoaded',async (e)=>{
     }
   })
 
+
+
   // code
   const trElement = document.querySelector('#board_list > #board_row').innerHTML // String .. replace()
   list = {
     ...response
   }
-  // const Nodes = response.data.result
 
+
+  // const Nodes = response.data.result
   const { total_record } = response.data // 288
   const view_article = 10 // 한 화면에 보일 갯수
   const block_article = 10 // 한 블럭당 보일 갯수
@@ -144,7 +124,7 @@ document.addEventListener('DOMContentLoaded',async (e)=>{
 
   // const tbody = document.querySelector('#board tbody')
   // tbody.innerHTML = template;
-})
+
 
 function pagemove(num){
   const trElement = document.querySelector('#board_list > #board_row').innerHTML
