@@ -26,6 +26,12 @@ router.get('/mypage',(req,res)=>{
   renderWithToken(req, res, './user/mypage')
 })
 
+router.get('/agree',(req,res)=>{
+  console.log('--------------------- 동의 구하는 페이지  ---------------------')
+  renderWithToken(req, res, './user/agree')
+})
+
+
 // 로그아웃 클릭시 실행
 router.post('/api/logout',(req,res)=>{
   const token = req.cookies.token
