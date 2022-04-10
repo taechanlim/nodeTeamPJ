@@ -1,0 +1,69 @@
+*{
+    margin:0;
+    padding: 0;
+}
+#adminpage{
+    width:1200px;
+    margin:200px;
+    border:1px solid black;
+}
+#adminpage > h1{
+    padding-bottom:50px;
+    margin-left:30px;
+    margin-top:30px;
+}
+#adminpage > h1 >a:hover{
+    opacity: 0.5;
+}
+#current_category_list > h1{
+    color: red;
+    margin-bottom:20px;
+    margin-left:30px;
+}
+#current_category_list > h3{
+    margin-bottom:20px;
+    font-size:25px;
+    margin-left:30px;
+}
+#cate_list{
+    margin-left:10px;
+    font-size:30px;
+}
+
+#category_plus_form{
+    font-size: 20px;
+    margin-left:30px;
+}
+#plus_input{
+    width:200px;
+    height:50px;
+    margin:10px 0 10px 10px;
+}
+#plus_btn{
+    width:100px;
+    height: 25px;
+    margin-left:20px;
+    color:green;
+}
+
+#category_delete_form{
+    font-size: 20px;
+    margin-left:30px;
+}
+#delete_input{
+    width:200px;
+    height:50px;
+    margin:10px 0 10px 10px;
+}
+#delete_btn{
+    width:100px;
+    height: 25px;
+    margin-left:20px;
+    color:red;
+}
+#location_btn{
+    margin:30px;
+}
+#location_btn > button{
+    margin-left:20px;
+}
