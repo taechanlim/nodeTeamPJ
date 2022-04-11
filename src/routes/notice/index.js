@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const {alertmove} = require('../../public/util/alert.js')
+const {renderWithToken} = require("../../public/util/headerLoginOut");
 
 const adminAccess = (req,res,next)=>{
   try{
@@ -20,29 +21,29 @@ const adminAccess = (req,res,next)=>{
 // 공지사항 리스트 페이지
 router.get('/list',(req,res)=>{
   console.log('--------------------- 공지사항 리스트 페이지 ---------------------')
-  res.render('./notice/list')
+  renderWithToken(req, res, './notice/list')
 })
 router.get('/board',(req,res)=>{
   console.log('--------------------- 공지사항 작성 페이지 ---------------------')
-  res.render('./notice/board')
+  renderWithToken(req, res, './notice/board')
 })
 
 // 공지사항 작성 페이지
 router.get('/write',adminAccess,(req,res)=>{
   console.log('--------------------- 공지사항 작성 페이지 ---------------------')
-  res.render('./notice/write')
+  renderWithToken(req, res, './notice/write')
 })
 
 // 공지사항 보기 페이지
 router.get('/view',(req,res)=>{
   console.log('--------------------- 공지사항 보기 페이지 ---------------------')
-  res.render('./notice/view')
+  renderWithToken(req, res, './notice/view')
 })
 
 // 공지사항 수정 페이지
 router.get('/update',(req,res)=>{
   console.log('--------------------- 공지사항 수정 페이지 ---------------------')
-  res.render('./notice/update')
+  renderWithToken(req, res, './notice/update')
 })
 
 module.exports = router
