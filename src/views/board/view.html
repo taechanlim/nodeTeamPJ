@@ -18,6 +18,7 @@
         <span id="heartshape"></span>
         </div>
         </div>
+<!--        {% if %}-->
         <div id="update_delete">
         <h2><a id="update_link" href="">수정하기</a></h2>
         <form id="board_delete_form" method="post" action="http://localhost4001/api/board/delete">
@@ -25,6 +26,8 @@
             <input id="delete_btn" type="submit" value="삭제하기">
         </form>
         </div>
+<!--        {% else %}-->
+<!--        {% endif %}-->
         <div id="comment_box">
         <form id="write_comment_board_form" method="post" action="http://localhost:4001/api/comment/write">
             <input id="input_comment" type="text" name="content" placeholder="댓글창입니다.">
