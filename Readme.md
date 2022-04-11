@@ -1,3 +1,7 @@
 ## .env 작성
     *카카오 REST_API_KEY
     *카카오 CLIENT_SECRET_CODE
+
+<!-- REST_API_KEY = 'd0fb9d8fac744241df1abe9600a1285a'
+CLIENT_SECRET_CODE = 'N9l9IRcgzIJXNG6luaWoMBQuPhspjGyX'
+ADMIN_KEY = '911a4d43ab74335a0fff9652ed276a9a' -->
